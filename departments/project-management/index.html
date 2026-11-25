@@ -86,6 +86,23 @@ footer a{color:var(--muted)}
  .panel{padding:22px 20px}
  body{font-size:16px}
 }
+/* Call button with a slow gold sweep, and the phone action bar */
+.btn-go{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 12px 11px 20px;border-radius:999px;background:linear-gradient(105deg,#8B1E2D 0%,#6E120F 62%,#9A5A1C 125%);color:#FBF4EC;text-decoration:none;font-weight:700;font-size:14px;line-height:1.2;border:1px solid rgba(217,174,80,.6);box-shadow:0 14px 28px -14px rgba(74,12,10,.8);transition:transform .2s,box-shadow .25s}
+.btn-go:hover{transform:translateY(-2px);box-shadow:0 18px 32px -14px rgba(74,12,10,.85)}
+.btn-go::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(240,207,122,.4),transparent);transform:skewX(-18deg);animation:goSweep 3.8s ease-in-out infinite}
+.btn-go span{position:relative}
+.btn-go i{position:relative;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:#F0CF7A;color:#4A0C0A;display:grid;place-items:center;font-style:normal;font-size:15px;transition:transform .25s}
+.btn-go:hover i{transform:translateX(3px)}
+@keyframes goSweep{0%,55%{left:-60%}100%{left:130%}}
+.actbar{display:none}
+@media (max-width:720px){
+ .topbar .deptback,.topbar .btn-go,.topbar .btn{display:none}
+ .topbar .wrap{justify-content:center;padding-block:12px}
+ .actbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;align-items:center;gap:10px;padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));background:rgba(251,244,236,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+ .actbar .ab-back{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A6A33;text-decoration:none;padding:12px 6px 12px 2px}
+ .actbar .btn-go{flex:1 1 auto;min-width:0;font-size:13.5px;padding-left:16px}
+ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <script type="application/ld+json">
@@ -100,7 +117,7 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <a class="brand" href="../../"><img src="../../media/logo-mark.png" alt="">Aqueenix</a>
     <a class="deptback" href="../../"><span aria-hidden="true">&larr;</span> Back to Aqueenix</a>
-    <a class="btn" href="../../#contact">Book a 30-minute call</a>
+    <a class="btn-go" href="../../#contact"><span>Book a free 30-minute strategy call</span><i aria-hidden="true">&rarr;</i></a>
   </div>
 </header>
 
@@ -146,8 +163,8 @@ footer a{color:var(--muted)}
 
     <div class="cta">
       <h2>Start with this department</h2>
-      <p>Thirty minutes, no obligation. We look at how project management runs today and show you where to start. You keep the written action plan either way.</p>
-      <a class="btn" href="../../#contact">Book my free 30-minute call</a>
+      <p>Thirty minutes on how your project management runs today. You leave with the first three moves, written down, whether you work with us or not.</p>
+      <a class="btn" href="../../#contact">Book a free 30-minute strategy call</a>
     </div>
 
     <div class="more">
@@ -163,5 +180,6 @@ footer a{color:var(--muted)}
   <span>Aqueenix Sdn Bhd (202501031554)</span>
   <span><a href="../../privacy/">Privacy</a> &middot; <a href="../../terms/">Terms</a></span>
 </div></footer>
+<nav class="actbar" aria-label="Quick actions"><a class="ab-back" href="../../"><span aria-hidden="true">&larr;</span> Home</a><a class="btn-go" href="../../#contact"><span>Book a free 30-minute strategy call</span><i aria-hidden="true">&rarr;</i></a></nav>
 </body>
 </html>
