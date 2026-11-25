@@ -1046,9 +1046,18 @@ html{scroll-behavior:auto}
 
 /* ---------- Contact ---------- */
 .contact{position:relative;padding-block:130px;background:linear-gradient(160deg,#2a1414,#160f0e);color:#F5EFE6;overflow:hidden;isolation:isolate}
-.ct-bg{position:absolute;inset:0 0 0 45%;z-index:-1;opacity:.22;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+.ct-bg{position:absolute;inset:0;z-index:-1;opacity:.16;-webkit-mask-image:radial-gradient(90% 70% at 70% 30%,#000,transparent 78%);mask-image:radial-gradient(90% 70% at 70% 30%,#000,transparent 78%)}
 .ct-bg img{width:100%;height:100%;object-fit:cover;filter:sepia(.5)}
-.ct-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.ct-grid{display:block}
+.ct-copy{max-width:none;margin-bottom:44px}
+.ct-copy h2{max-width:20ch}
+.ct-copy .lead{max-width:56ch}
+.ct-head-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:end}
+.ct-list{margin-top:0}
+.enq{max-width:none}
+.enq-wide{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.enq-wide>div{display:grid;gap:8px;min-width:0}
+@media(max-width:900px){.ct-head-row{grid-template-columns:1fr;gap:28px;align-items:start}.ct-list{margin-top:8px}.enq-wide{grid-template-columns:1fr}}
 .ct-grid>*{min-width:0}
 .contact h2{font-size:clamp(38px,4.6vw,60px);margin:18px 0 18px}
 .contact h2 em,.contact .eyebrow{color:#D9AE50}
@@ -1658,6 +1667,22 @@ main>section{position:relative}
   .tn-expect{grid-template-columns:1fr}
 }
 
+/* ---------- Operator: the gallery, then the portrait ---------- */
+.story-visual{position:relative;height:auto!important;display:flex;flex-direction:column;gap:22px}
+.op-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.opg{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:3/3.6;background:rgba(248,242,233,.06);
+  box-shadow:0 18px 34px -22px rgba(12,5,4,.8);border:1px solid rgba(235,197,113,.22)}
+.opg img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92) contrast(1.02);transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s}
+.opg:hover img{transform:scale(1.06);filter:saturate(1) contrast(1.04)}
+.opg figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;
+  font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F8F2E9;
+  background:linear-gradient(0deg,rgba(20,9,7,.88),transparent)}
+.founder-photo{position:relative!important;inset:auto!important;height:clamp(400px,42vw,520px);width:100%}
+.story-visual .story-quote{position:relative;inset:auto;width:auto;max-width:none}
+.story-visual .chip{z-index:4}
+@media(max-width:1100px){.opg figcaption{font-size:9px;letter-spacing:.12em}}
+@media(max-width:860px){.op-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.founder-photo{height:380px}}
+@media(max-width:560px){.op-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ---------- Operator: April figure, musical chain, ensemble ---------- */
 .founder-photo.april{background:none}
 .founder-photo.april::after{content:"";position:absolute;inset:-14% -16% -2% -16%;z-index:0;pointer-events:none;
@@ -2437,6 +2462,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
   <div class="px-layer" aria-hidden="true"><span class="px ring " style="left:-100px;bottom:-60px;--s:300px" data-y="-160" data-r="0" data-sc="1.3"></span></div>
   <div class="wrap split">
     <div class="story-visual" id="storyVisual">
+      <div class="op-gallery" role="group" aria-label="April on stage, on air and in the room"><figure class="opg"><img src="media/stage/speak-mic.webp" alt="April Chen speaking with a microphone at a lecture hall" loading="lazy" decoding="async"><figcaption>Speaking</figcaption></figure><figure class="opg"><img src="media/stage/legacy-stage.webp" alt="April Chen on a main stage, her name on the screen behind her" loading="lazy" decoding="async"><figcaption>Keynote</figcaption></figure><figure class="opg"><img src="media/stage/radio.webp" alt="April Chen in a radio studio with the ON AIR sign lit" loading="lazy" decoding="async"><figcaption>On air</figcaption></figure><figure class="opg"><img src="media/stage/aqx-stage2.webp" alt="April Chen presenting in a recording studio" loading="lazy" decoding="async"><figcaption>In studio</figcaption></figure><figure class="opg"><img src="media/stage/panel-book.webp" alt="April Chen on an author panel, her book chapter on the slide behind" loading="lazy" decoding="async"><figcaption>Author panel</figcaption></figure><figure class="opg"><img src="media/stage/seated-present.webp" alt="April Chen presenting a session from the front of a room" loading="lazy" decoding="async"><figcaption>Workshops</figcaption></figure><figure class="opg"><img src="media/stage/toastmasters.webp" alt="April Chen presenting to a room" loading="lazy" decoding="async"><figcaption>On stage</figcaption></figure><figure class="opg"><img src="media/stage/team-landserve.webp" alt="A client team April Chen trained" loading="lazy" decoding="async"><figcaption>Team training</figcaption></figure><figure class="opg"><img src="media/stage/desk-online.webp" alt="April Chen at her desk running an online session" loading="lazy" decoding="async"><figcaption>Online</figcaption></figure></div>
       <div class="founder-photo april"><svg class="op-staff" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
 <defs><linearGradient id="opg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0CF7A"/><stop offset=".55" stop-color="#C8941E"/><stop offset="1" stop-color="#8B1E2D"/></linearGradient></defs>
 <g fill="none" stroke="url(#opg)" stroke-width="1.5" opacity=".55">
@@ -2453,15 +2479,15 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
 <g fill="none" stroke="url(#opg)" stroke-width="1.2" opacity=".4">
 <circle cx="316" cy="118" r="7"/><circle cx="330" cy="126" r="7"/><circle cx="344" cy="118" r="7"/><circle cx="358" cy="126" r="7"/><circle cx="372" cy="118" r="7"/>
 <circle cx="196" cy="612" r="6.5"/><circle cx="209" cy="620" r="6.5"/><circle cx="222" cy="612" r="6.5"/><circle cx="235" cy="620" r="6.5"/>
-</g></svg><img src="media/april-figure.webp" alt="April Chen, Founder and CEO of Aqueenix" loading="lazy" decoding="async"></div>
+</g></svg><img src="media/april-figure.webp" alt="April Chen, Founder and CEO of Aqueenix" loading="lazy" decoding="async"><div class="chip c1"><i aria-hidden="true"></i>Certified Data Protection Officer</div>
+      <div class="chip c2"><i aria-hidden="true"></i>HRD Corp Accredited Trainer</div>
+      <div class="chip c3"><i aria-hidden="true"></i>Certified Internal Auditor</div>
+      <div class="chip c4"><i aria-hidden="true"></i>Amazon best-selling author</div></div>
       <figure class="story-quote">
         <blockquote><p class="sq">&ldquo;Common sense is not so common. Not for people, and not for <em>AI.</em>&rdquo;</p></blockquote>
         <figcaption>April Chen</figcaption>
       </figure>
-      <div class="chip c1"><i aria-hidden="true"></i>Certified Data Protection Officer</div>
-      <div class="chip c2"><i aria-hidden="true"></i>HRD Corp Accredited Trainer</div>
-      <div class="chip c3"><i aria-hidden="true"></i>Certified Internal Auditor</div>
-      <div class="chip c4"><i aria-hidden="true"></i>Amazon best-selling author</div>
+      
     </div>
     <div class="reveal">
       <div class="eyebrow">Who builds it</div>
@@ -2563,12 +2589,17 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
   <div class="wrap ct-grid">
     <div class="ct-copy reveal">
       <div class="eyebrow">Talk to us</div>
-      <h2 id="ct-h">Tell us how your business runs <em>today.</em> We will show you where to start.</h2>
-      <p class="lead">Send us a few lines about your business. The first conversation is about you, not a sales pitch.</p>
-      <ul class="ct-list">
-        <li><span>Email</span><a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a></li>
-        <li><span>Office</span>D3-47, Block Dahlia, 10 Boulevard, Lebuhraya Sprint, PJU 6A, 47400 Petaling Jaya, Selangor</li>
-      </ul>
+      <div class="ct-head-row">
+        <div>
+          <h2 id="ct-h">Tell us how your business runs <em>today.</em> You will leave the call knowing exactly where to start.</h2>
+          <p class="lead">Thirty minutes on how your business actually runs. You get the first three moves, written down, whether you work with us or not.</p>
+        </div>
+        <ul class="ct-list">
+          <li><span>Email</span><a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a></li>
+          <li><span>WhatsApp</span><a href="https://wa.me/60165290236" target="_blank" rel="noopener">+60 16-529 0236</a></li>
+          <li><span>Office</span>D3-47, Block Dahlia, 10 Boulevard, Lebuhraya Sprint, PJU 6A, 47400 Petaling Jaya, Selangor</li>
+        </ul>
+      </div>
     </div>
     <form class="enq" id="enqForm" novalidate>
       <label for="enqTopic">I am here for</label>
