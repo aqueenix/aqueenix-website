@@ -21,6 +21,14 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font
 :root{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
  --bg:#FBF4EC;--ink:#2A2220;--muted:#6B5C55;--em:#8B1E2D;--gold:#C8941E;--gold-l:#D9AE50;--cream:#F5EFE6;--blush:#F6E3E2;--line:rgba(110,18,15,.14);--card:#FFFDFA;--dark:#2A2220}
 img{max-width:100%;height:auto;display:block}
+.deptback{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans,inherit);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A6A33;text-decoration:none;padding:8px 0}
+.deptback:hover{color:#6E120F}
+.deptback span{font-size:15px;line-height:1}
+.dept-foot-back{margin:48px 0 8px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.dept-foot-back a{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(200,148,30,.45);border-radius:999px;padding:11px 20px;font-size:13px;font-weight:600;color:#6E120F;text-decoration:none;background:rgba(253,246,244,.6)}
+.dept-foot-back a:hover{border-color:#C8941E;background:#fff}
+.dept-foot-back a.alt{border-color:rgba(74,12,10,.18);color:#4C3B33}
+
 a{color:var(--em)}
 .wrap{max-width:860px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .topbar{position:sticky;top:0;z-index:20;background:rgba(251,244,236,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -91,6 +99,7 @@ footer a{color:var(--muted)}
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="../../"><img src="../../media/logo-mark.png" alt="">Aqueenix</a>
+    <a class="deptback" href="../../"><span aria-hidden="true">&larr;</span> Back to Aqueenix</a>
     <a class="btn" href="../../#contact">Book a 30-minute call</a>
   </div>
 </header>
@@ -147,6 +156,7 @@ footer a{color:var(--muted)}
       <p style="margin-top:18px"><a href="../">See all nine departments</a></p>
     </div>
   </div>
+<div class="wrap"><div class="dept-foot-back"><a href="../../">&larr; Back to the main page</a><a class="alt" href="../">All nine departments</a></div></div>
 </main>
 
 <footer><div class="wrap">
