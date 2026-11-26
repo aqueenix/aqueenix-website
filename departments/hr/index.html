@@ -322,7 +322,8 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
       '<p class="dq-sent" id="dqSent"></p>';
     body.innerHTML=h;
     document.getElementById('dqAgain').addEventListener('click',function(){ans=[];i=0;ask();focusTop()});
-    var data={source:'HR department check',page:location.pathname,score:score+' of '+max,level:lv.n,
+    var trail='';try{trail=JSON.parse(sessionStorage.getItem('aq_trail')||'[]').join(' > ')}catch(e){}
+    var data={source:'HR department check',status:'Completed',stopped_at:'Finished',pages_viewed:trail,came_from:document.referrer||'Direct',page:location.pathname,score:score+' of '+max,level:lv.n,
       gaps:weak.map(function(g){return Q[g.x].t}).join('; ')||'None'};
     Q.forEach(function(q,x){data['hr_'+q.k]=q.o[ans[x]]});
     var sent=document.getElementById('dqSent');
@@ -335,5 +336,6 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
 })();
 </script>
 <nav class="actbar" aria-label="Quick actions"><a class="ab-back" href="../../"><span aria-hidden="true">&larr;</span> Home</a><a class="btn-go" href="../../#contact"><span>Book a free 30-minute strategy call</span><i aria-hidden="true">&rarr;</i></a></nav>
+<script>try{(function(){var k='aq_trail',p=JSON.parse(sessionStorage.getItem(k)||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);sessionStorage.setItem(k,JSON.stringify(p.slice(-20)))}})()}catch(e){}</script>
 </body>
 </html>

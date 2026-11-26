@@ -103,6 +103,52 @@ footer a{color:var(--muted)}
  .actbar .btn-go{flex:1 1 auto;min-width:0;font-size:13.5px;padding-left:16px}
  body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }
+.hero-jump{margin:18px 0 0}.hero-jump a{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:var(--em);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
+html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
+/* The 2-minute department check (sample department assessment) */
+.dq{margin-top:clamp(36px,5vw,58px);border-radius:26px;border:1px solid rgba(200,148,30,.45);background:linear-gradient(165deg,#FFFDFA,#FBEFE2);padding:clamp(22px,4vw,38px);box-shadow:0 30px 60px -44px rgba(110,18,15,.5)}
+.dq-k{display:flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 10px}
+.dq-k::before{content:"";width:26px;height:1px;background:currentColor}
+.dq h2{margin-bottom:8px}
+.dq-lede{color:var(--muted);font-size:16px;margin:0 0 20px;max-width:600px}
+.dq-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dq-f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dq-f.full{grid-column:1/-1}
+.dq-f label{font-size:12.5px;font-weight:700;color:#5B4742}
+.dq-f input[type=text],.dq-f input[type=email],.dq-f input[type=tel]{font:inherit;font-size:16px;padding:13px 15px;border-radius:14px;border:1px solid rgba(110,18,15,.22);background:#fff;color:var(--ink);width:100%}
+.dq-f input:focus-visible{outline:3px solid rgba(200,148,30,.55);outline-offset:1px;border-color:var(--gold)}
+.dq-consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.dq-consent input{margin-top:3px;width:18px;height:18px;flex:0 0 18px;accent-color:#8B1E2D}
+.dq-err{grid-column:1/-1;margin:0;font-size:13.5px;font-weight:600;color:#A3261F;min-height:1.2em}
+.dq-actions{grid-column:1/-1;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.dq button{font:inherit;cursor:pointer}
+.dq-go{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;border:1px solid transparent;background:var(--em);color:#FBF4EC;font-weight:700;font-size:15px}
+.dq-go:hover{box-shadow:0 16px 30px -16px rgba(139,30,45,.7)}
+.dq-back{background:none;border:0;color:var(--muted);font-size:14px;font-weight:600;padding:10px 4px;text-decoration:underline;text-underline-offset:3px}
+.dq-prog{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:#8A6A33}
+.dq-bar{flex:1;height:5px;border-radius:5px;background:rgba(200,148,30,.2);overflow:hidden}
+.dq-bar i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#C8941E,#8B1E2D);transition:width .4s}
+.dq-q{font-family:var(--serif);font-size:clamp(22px,2.8vw,29px);line-height:1.2;font-weight:600;color:#3A0E0C;margin:0 0 16px}
+.dq-opts{display:grid;gap:10px}
+.dq-opt{text-align:left;padding:15px 18px;border-radius:16px;border:1px solid rgba(110,18,15,.18);background:#fff;color:var(--ink);font-size:15.5px;line-height:1.45;transition:border-color .2s,transform .2s,background .2s}
+.dq-opt:hover{border-color:var(--gold);transform:translateY(-1px)}
+.dq-opt[aria-pressed=true]{border-color:#8B1E2D;background:#FBEBE6}
+.dq-opt:focus-visible,.dq-go:focus-visible,.dq-back:focus-visible{outline:3px solid rgba(200,148,30,.6);outline-offset:2px}
+.dq-res-top{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.dq-ring{flex:0 0 96px;width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#8B1E2D calc(var(--v)*1%),rgba(200,148,30,.22) 0);position:relative}
+.dq-ring::before{content:"";position:absolute;inset:8px;border-radius:50%;background:#FFFDFA}
+.dq-ring b{position:relative;font-family:var(--serif);font-size:30px;font-weight:600;color:#3A0E0C;line-height:1}
+.dq-ring small{position:relative;display:block;font-size:10.5px;color:var(--muted);text-align:center;font-family:var(--sans);font-weight:600}
+.dq-lv{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:600;color:var(--em);line-height:1.1;margin:0 0 4px}
+.dq-lvd{margin:0;color:var(--muted);font-size:15.5px;max-width:520px}
+.dq-h{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:22px 0 10px}
+.dq-moves{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:mv}
+.dq-moves li{counter-increment:mv;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid rgba(110,18,15,.12);font-size:15.5px;line-height:1.5}
+.dq-moves li::before{content:counter(mv);width:30px;height:30px;border-radius:50%;background:#8B1E2D;color:#FBF4EC;display:grid;place-items:center;font-family:var(--serif);font-size:17px}
+.dq-moves b{display:block;font-size:13px;color:#8A6A33;font-weight:700;margin-bottom:2px}
+.dq-note{margin:18px 0 20px;padding-left:14px;border-left:2px solid var(--gold-l);font-size:14px;line-height:1.55;color:var(--muted)}
+.dq-sent{font-size:13px;color:var(--muted);margin:12px 0 0}
+@media (max-width:720px){.dq-form{grid-template-columns:1fr}.dq-go{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <script type="application/ld+json">
@@ -128,6 +174,7 @@ footer a{color:var(--muted)}
       <h1>Finance</h1>
       <p class="hook">You know the money is moving. You find out how a week later.</p>
       <p class="meta"><span>Published <b>25 June 2026</b></span><span>Aqueenix operations notes</span></p>
+      <p class="hero-jump"><a href="#deptCheck">Take the 2-minute Finance check <span aria-hidden="true">&darr;</span></a></p>
     </div>
     <div class="hero-fig"><img src="../../media/dept/finance.webp" alt="" loading="eager"></div>
   </div>
@@ -159,6 +206,15 @@ footer a{color:var(--muted)}
       <ul class="watch"><li>Days from invoice to payment</li><li>Days to close the month</li><li>Payments waiting for approval</li><li>Transactions without a supporting document</li></ul>
     </section>
 
+    <section class="dq" id="deptCheck" aria-labelledby="dq-h">
+      <p class="dq-k">Two minutes &middot; Seven questions</p>
+      <h2 id="dq-h">The 2-minute Finance check</h2>
+      <div id="dqBody" aria-live="polite">
+        <p class="dq-lede">Seven plain questions about how your finance side runs today. You get a score, your two weakest spots and the first move for each. No jargon, no sales pitch in the middle.</p>
+        <noscript><p class="dq-lede">This check needs JavaScript. You can <a href="../../#contact">book the call</a> instead.</p></noscript>
+      </div>
+    </section>
+
     <div class="human"><p>AI reconciles the numbers. <em>You still decide what the business can afford.</em></p></div>
 
     <div class="cta">
@@ -180,6 +236,84 @@ footer a{color:var(--muted)}
   <span>Aqueenix Sdn Bhd (202501031554)</span>
   <span><a href="../../privacy/">Privacy</a> &middot; <a href="../../terms/">Terms</a></span>
 </div></footer>
+<script>
+/* The 2-minute Finance check: details first, seven questions, one result. Sent to Chatbees once, on completion. */
+(function(){
+  var body=document.getElementById('dqBody');if(!body)return;
+  var HOOK='https://my.chatbees.io/api/webhooks/flow/10170/2e357bbef957fde461b8db0f6326471cac002869918fbde40df1f044d28c5018';
+  var Q=[{"k": "cash", "q": "If you needed your cash position right now, how would you get it?", "o": ["It is in front of me every day", "Someone prepares it when I ask", "I wait for month-end"], "t": "Cash you can see", "m": "Ask for one number every evening: cash in the bank. Same time, same person, for two weeks."}, {"k": "close", "q": "How long does it take to close the month?", "o": ["Within a week, on a fixed date", "Two to three weeks, and it varies", "When someone is free"], "t": "A close on schedule", "m": "Set a fixed close date and list the five things that hold it up. Fix the first one this month."}, {"k": "approvals", "q": "A payment needs approval while you are away. What happens?", "o": ["It is approved the same day, with the documents attached", "It waits in a chat or an email until I am back", "It gets paid first and explained later"], "t": "Approvals that do not wait", "m": "Set one approval route, and a limit someone else may approve under. Write both down."}, {"k": "invoices", "q": "How do invoices go out and get followed up?", "o": ["On a schedule, with reminders that go by themselves", "They go out, and we chase when we remember", "Only when cash gets tight"], "t": "Invoices chased on time", "m": "Pick two fixed days a week for sending and chasing invoices. Start with the three oldest."}, {"k": "documents", "q": "Where do the supporting documents for a transaction live?", "o": ["Attached to the transaction, every time", "In folders and inboxes, found when asked", "We hunt for them at audit time"], "t": "Documents with every transaction", "m": "From today, no payment is keyed in without its document attached. Do not go back yet. Start from today."}, {"k": "claims", "q": "How do claims and expenses reach finance?", "o": ["One route, with one cut-off day", "A mix of chat, email and paper", "Whenever people hand them in"], "t": "One route for claims", "m": "Pick one route for claims and one cut-off day each week. Tell everyone, then hold to it for a month."}, {"k": "ai_rules", "q": "Has your team used AI on any finance work, such as matching, summaries or reports?", "o": ["Yes, with a person checking the numbers", "A few people do, on their own", "Not yet"], "t": "Rules for AI on finance data", "m": "Write one page: what finance data may go into an AI tool, and who checks every number that comes out."}];
+  var LV=[
+    {min:11,n:'Ready to put AI to work',d:'The basics hold. Your finance side is clear enough for AI to take the repeat work without causing confusion.'},
+    {min:6,n:'Some of it holds',d:'Parts are clear and parts depend on memory. Tidy the weak spots below first, and AI will have something solid to work on.'},
+    {min:0,n:'Foundation first',d:'Most of this runs on people remembering. That is normal at your size, and it is the right place to start, before any AI.'}
+  ];
+  var START='https://my.chatbees.io/api/webhooks/flow/10187/bd87b889f1f602b4e8c8f81a129679b80b962887060c5625d27c071e653b349f',startSent='';
+  function e164(v){var s=String(v||'').replace(/[\s().-]/g,'');if(/^0\d{8,10}$/.test(s))return '+6'+s;if(/^60\d{8,10}$/.test(s))return '+'+s;return s}
+  var lead={},ans=[],i=0;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function focusTop(){var h=body.querySelector('[data-f]');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
+    var r=document.getElementById('deptCheck').getBoundingClientRect();if(r.top<0||r.top>window.innerHeight*.5)window.scrollTo({top:window.pageYOffset+r.top-80,behavior:'smooth'})}
+  function gate(){
+    body.innerHTML='<p class="dq-lede">Seven plain questions about how your finance side runs today. You get a score, your two weakest spots and the first move for each. Tell us where to send it, then start.</p>'+
+      '<form class="dq-form" id="dqForm" novalidate>'+
+      '<div class="dq-f"><label for="dqN">What should we call you?</label><input type="text" id="dqN" autocomplete="name" required></div>'+
+      '<div class="dq-f"><label for="dqP">Mobile, for WhatsApp</label><input type="tel" id="dqP" autocomplete="tel" inputmode="tel" placeholder="e.g. 012 345 6789" required></div>'+
+      '<div class="dq-f full"><label for="dqE">Work email</label><input type="email" id="dqE" autocomplete="email" required></div>'+
+      '<label class="dq-consent"><input type="checkbox" id="dqC"><span>I agree that Aqueenix may save these details and my answers, and contact me about my result, as set out in the <a href="../../privacy/">Privacy Notice</a>.</span></label>'+
+      '<p class="dq-err" id="dqErr" role="alert"></p>'+
+      '<div class="dq-actions"><button type="submit" class="dq-go">Save and start <span aria-hidden="true">&rarr;</span></button></div></form>';
+    var f=document.getElementById('dqForm');
+    if(lead.name){f.dqN.value=lead.name;f.dqP.value=lead.phone;f.dqE.value=lead.email;f.dqC.checked=true}
+    f.addEventListener('submit',function(e){e.preventDefault();
+      var n=f.dqN.value.trim(),p=f.dqP.value.trim(),em=f.dqE.value.trim(),err=document.getElementById('dqErr');
+      if(n.length<2){err.textContent='Please tell us what to call you.';f.dqN.focus();return}
+      if(p.replace(/\D/g,'').length<8){err.textContent='Please enter a mobile number we can reach on WhatsApp.';f.dqP.focus();return}
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='Please enter a valid email address.';f.dqE.focus();return}
+      if(!f.dqC.checked){err.textContent='Please tick the box so we may save your details and answers.';f.dqC.focus();return}
+      lead={name:n,phone:p,email:em};i=0;
+      if(window.fetch&&startSent!==em){startSent=em;fetch(START,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:n,contactEmail:em,contactPhone:e164(p),data:{name:n,email:em,whatsapp:p,source:'Finance department check',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice)'}})}).catch(function(){})}
+      ask();focusTop()});
+  }
+  function ask(){
+    var q=Q[i],h='<p class="dq-prog"><span>Question '+(i+1)+' of '+Q.length+'</span><span class="dq-bar" aria-hidden="true"><i style="width:'+Math.round(i/Q.length*100)+'%"></i></span></p>'+
+      '<p class="dq-q" data-f>'+esc(q.q)+'</p><div class="dq-opts">';
+    q.o.forEach(function(o,j){h+='<button type="button" class="dq-opt" data-j="'+j+'" aria-pressed="'+(ans[i]===j)+'">'+esc(o)+'</button>'});
+    h+='</div><div class="dq-actions" style="margin-top:16px"><button type="button" class="dq-back" id="dqBack">'+(i?'Back':'Change my details')+'</button></div>';
+    body.innerHTML=h;
+    [].forEach.call(body.querySelectorAll('.dq-opt'),function(b){b.addEventListener('click',function(){
+      ans[i]=+b.getAttribute('data-j');b.setAttribute('aria-pressed','true');
+      setTimeout(function(){if(i<Q.length-1){i++;ask()}else{result()}focusTop()},180)})});
+    document.getElementById('dqBack').addEventListener('click',function(){if(i){i--;ask()}else{gate()}focusTop()});
+  }
+  function result(){
+    var score=0,max=Q.length*2,gaps=[];
+    Q.forEach(function(q,x){var p=2-ans[x];score+=p;gaps.push({x:x,p:p})});
+    gaps.sort(function(a,b){return a.p-b.p||a.x-b.x});
+    var weak=gaps.filter(function(g){return g.p<2}).slice(0,2),lv=LV.filter(function(l){return score>=l.min})[0],pct=Math.round(score/max*100);
+    var h='<div class="dq-res-top"><div class="dq-ring" style="--v:'+pct+'"><div><b>'+score+'</b><small>of '+max+'</small></div></div>'+
+      '<div><p class="dq-lv" data-f>'+esc(lv.n)+'</p><p class="dq-lvd">'+esc(lv.d)+'</p></div></div>';
+    if(weak.length){h+='<p class="dq-h">Your first '+(weak.length>1?'two moves':'move')+'</p><ol class="dq-moves">';
+      weak.forEach(function(g){h+='<li><div><b>'+esc(Q[g.x].t)+'</b>'+esc(Q[g.x].m)+'</div></li>'});h+='</ol>'}
+    else{h+='<p class="dq-h">Nothing weak here</p><p class="dq-lvd">Every answer was the strong one. The next question is where AI can take repeat work off your team. That is a good use of the call.</p>'}
+    h+='<p class="dq-note">This is a quick read from a standard template, written by our founder from the finance work we do. The plan built around your business comes after a strategy call.</p>'+
+      '<div class="dq-actions"><a class="btn-go" href="../../#contact"><span>Book a free 30-minute strategy call</span><i aria-hidden="true">&rarr;</i></a><button type="button" class="dq-back" id="dqAgain">Answer again</button></div>'+
+      '<p class="dq-sent" id="dqSent"></p>';
+    body.innerHTML=h;
+    document.getElementById('dqAgain').addEventListener('click',function(){ans=[];i=0;ask();focusTop()});
+    var trail='';try{trail=JSON.parse(sessionStorage.getItem('aq_trail')||'[]').join(' > ')}catch(e){}
+    var data={source:'Finance department check',status:'Completed',stopped_at:'Finished',pages_viewed:trail,came_from:document.referrer||'Direct',page:location.pathname,score:score+' of '+max,level:lv.n,
+      gaps:weak.map(function(g){return Q[g.x].t}).join('; ')||'None'};
+    Q.forEach(function(q,x){data['fin_'+q.k]=q.o[ans[x]]});
+    var sent=document.getElementById('dqSent');
+    if(!window.fetch){return}
+    fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:lead.name,contactEmail:lead.email,contactPhone:e164(lead.phone),data:data})})
+      .then(function(r){if(sent)sent.textContent=r.ok?'Saved. We have your result, '+lead.name.split(' ')[0]+'.':'We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'})
+      .catch(function(){if(sent)sent.textContent='We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'});
+  }
+  gate();
+})();
+</script>
 <nav class="actbar" aria-label="Quick actions"><a class="ab-back" href="../../"><span aria-hidden="true">&larr;</span> Home</a><a class="btn-go" href="../../#contact"><span>Book a free 30-minute strategy call</span><i aria-hidden="true">&rarr;</i></a></nav>
+<script>try{(function(){var k='aq_trail',p=JSON.parse(sessionStorage.getItem(k)||'[]');if(p[p.length-1]!==location.pathname){p.push(location.pathname);sessionStorage.setItem(k,JSON.stringify(p.slice(-20)))}})()}catch(e){}</script>
 </body>
 </html>
