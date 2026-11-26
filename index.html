@@ -2291,6 +2291,48 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
 .hrd-set img{width:92px;height:92px;border-radius:50%;box-shadow:0 10px 24px -12px rgba(0,0,0,.7)}
 .hrd-no{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:rgba(245,239,230,.75)}
 .hrd-no b{display:block;color:#F5EFE6;font-weight:600;font-size:13.5px}
+
+/* ===== Brand palette: cream, maroon, charcoal, olive, gold as line (26 Nov 2026) ===== */
+.t-blush{--bg:#F5EFE6;--card:#FBF7F0;--blush-bg:#EDE3D2;--sand-bg:#EFE6D6;--em:#6E120F;
+  background:radial-gradient(60% 50% at 88% 6%,rgba(200,148,30,.17),transparent 70%),radial-gradient(50% 60% at 4% 92%,rgba(110,18,15,.07),transparent 70%),linear-gradient(180deg,#F9F4EC,#F5EFE6 55%,#EDE3D2)}
+.t-cream{--bg:#EDE3D2;background:linear-gradient(180deg,#F2E9DA,#EDE3D2);background-color:#EDE3D2}
+.hb-orb.o1{background:radial-gradient(circle,rgba(217,174,80,.42),transparent 66%)}
+.hb-orb.o2{background:radial-gradient(circle,rgba(110,18,15,.14),transparent 66%)}
+#framework,#about{--bg:#5A0F0D;
+  background:radial-gradient(60% 50% at 88% -4%,rgba(200,148,30,.26),transparent 68%),radial-gradient(55% 55% at 2% 102%,rgba(20,19,18,.45),transparent 68%),linear-gradient(170deg,#6E120F,#4A0C0A 74%)}
+#unfold,#game{--bg:#1B1A18;
+  background:radial-gradient(60% 50% at 88% -4%,rgba(200,148,30,.2),transparent 68%),radial-gradient(55% 55% at 2% 102%,rgba(110,18,15,.3),transparent 68%),linear-gradient(170deg,#262321,#141312 74%)}
+#wall{--bg:#3D4028;
+  background:radial-gradient(60% 50% at 88% -4%,rgba(200,148,30,.24),transparent 68%),radial-gradient(55% 55% at 2% 102%,rgba(20,19,18,.4),transparent 68%),linear-gradient(170deg,#4A4D34,#33361F 74%)}
+.contact{background:linear-gradient(160deg,#262321,#141312)}
+
+/* ===== Hero opens on the title, not a chapter number ===== */
+.hero.hero-b .eyebrow{font-size:clamp(12px,.95vw,13.5px);letter-spacing:.2em;font-weight:800;color:#6E120F;margin-bottom:26px;gap:16px}
+@media(min-width:1100px){.hero.hero-b .eyebrow{white-space:nowrap}}
+.hero.hero-b .eyebrow::before{width:44px;background:#C8941E;opacity:1}
+
+/* ===== Strategy call block in How we work ===== */
+.ways-cta{display:grid;gap:14px;justify-items:start;align-content:center}
+.ways-cta .ways-h{margin:0}
+.ways-q{font-family:var(--serif);font-size:clamp(34px,3.6vw,50px);line-height:1.04;font-weight:600;color:#211F1D;margin:0}
+.ways-q em{color:#6E120F;font-style:italic}
+.ways-p2{font-size:17px;line-height:1.6;color:#4d443e;max-width:44ch;margin:0 0 6px}
+
+/* ===== Gold thread and wand ===== */
+main>.marquee{position:relative;overflow:visible;overflow-x:clip}
+.thr{position:absolute;left:0;top:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:hidden}
+.thr path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.thr .thr-g{stroke:rgba(200,148,30,.2);stroke-width:1}
+.thr .thr-l{stroke:#C8941E;stroke-width:1.5}
+.wand{position:absolute;left:0;top:0;width:0;height:0;z-index:-1;pointer-events:none;will-change:transform;opacity:0;transition:opacity .5s}
+.wand.on{opacity:1}
+.wand svg{position:absolute;left:-22px;top:-44px;width:44px;height:56px;overflow:visible;filter:drop-shadow(0 0 5px rgba(240,207,122,.85))}
+.wand-fx{position:absolute;left:0;top:0;width:0;height:0;z-index:-1;pointer-events:none}
+.wand-fx i{position:absolute;left:0;top:0;display:block;background:#F0CF7A;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:wandTw var(--t,.9s) ease-out forwards;filter:drop-shadow(0 0 3px rgba(240,207,122,.9))}
+@keyframes wandTw{0%{transform:translate(var(--x),var(--y)) scale(0) rotate(0)}35%{transform:translate(var(--x),var(--y)) scale(1) rotate(40deg);opacity:1}100%{transform:translate(calc(var(--x) + var(--dx)),calc(var(--y) + var(--dy))) scale(0) rotate(110deg);opacity:0}}
+@media(max-width:700px){.wand svg{left:-16px;top:-32px;width:32px;height:41px}}
+@media(prefers-reduced-motion:reduce){.wand,.wand-fx{display:none}}
+
 </style>
 </head>
 <body>
@@ -2302,7 +2344,6 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
   <div class="hb-bg" aria-hidden="true"><i class="hb-orb o1"></i><i class="hb-orb o2"></i><i class="hb-orb o3"></i><svg class="hb-arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path d="M-80 720 C 300 520, 640 860, 1520 380"/><path d="M-80 780 C 360 600, 700 920, 1520 470"/><path d="M-80 840 C 420 680, 760 980, 1520 560"/></svg></div>
   <div class="wrap hb-grid">
     <div class="hb-copy">
-      <p class="ch-mark h-in"><span>01</span>Who we are</p>
       <div class="eyebrow h-in">Business Process Engineering to AI Transformation</div>
       <h1>
         <span class="line"><span>We analyse and re-engineer</span></span>
@@ -2508,14 +2549,12 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
       <div class="how-drivers">
         <p class="how-k">What shapes your quote</p>
         <ul><li>Number of people</li><li>Departments involved</li><li>Customer channels</li><li>Systems to connect</li><li>Training needs</li></ul>
-        <a class="btn btn-wine" href="#contact" data-topic="Book a 30-minute strategy call">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class="ways">
-        <p class="ways-p">Thirty minutes. <em>We send you a report with three actions you can start on yourself.</em></p>
-        <p class="ways-h">A clear action step on what you can start with</p>
-        <article class="way"><span class="way-n">1</span><div><h3>Do it yourself</h3><p>We deliver a custom, sequenced AI transformation plan, ready for your own team to execute.</p></div></article>
-        <article class="way"><span class="way-n">2</span><div><h3>Train your key person</h3><p>We deliver your blueprint and train the key person accountable for each workflow to build and execute.</p></div></article>
-        <article class="way"><span class="way-n">3</span><div><h3>Done for you</h3><p>We design, build and integrate your AI workflows using your existing tools, then train your team, as one accountable partner.</p></div></article>
+      <div class="ways ways-cta">
+        <p class="ways-h">The strategy call</p>
+        <p class="ways-q">Ready to transform <em>your business?</em></p>
+        <p class="ways-p2">Thirty minutes. We send you a report with three actions you can start on yourself.</p>
+        <a class="btn btn-wine" href="#contact" data-topic="Book a 30-minute strategy call">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
     <div class="coo reveal" id="coo">
@@ -2715,9 +2754,9 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
         <noscript><p class="nojs">The assessment needs JavaScript turned on in your browser.</p></noscript>
       </article>
       <div class="talk">
-        <p class="ways-h">Prefer to talk first?</p>
+        <p class="ways-h">Ready to transform your business?</p>
         <h3>Book your free 30-minute strategy call</h3>
-        <ul class="talk-list"><li>A clear view of what to fix first</li><li>Your options, from do it yourself to done for you</li><li>A written quote afterwards, based on your size and scope</li></ul>
+        <ul class="talk-list"><li>A clear view of what to fix first</li><li>The options that fit your business</li><li>A written quote afterwards, based on your size and scope</li></ul>
         <a class="btn btn-wine" href="#contact" data-topic="Book a 30-minute strategy call">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a>
         <p class="talk-note">No obligation. You keep the action plan either way.</p>
       </div>
@@ -2800,7 +2839,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
         <option>Enterprise: RM100,000 to RM200,000</option>
         <option>I am not sure yet, help me scope it</option>
       </select>
-      <label class="consent" for="enqConsent"><input type="checkbox" id="enqConsent" name="consent"><span>I agree that Aqueenix Sdn Bhd may collect and process these details to arrange my call, prepare my report and contact me about it by email, phone or WhatsApp, using the service providers named in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. I can withdraw this at any time.</span></label>
+      <label class="consent" for="enqConsent"><input type="checkbox" id="enqConsent" name="consent"><span>I agree that Aqueenix Sdn Bhd may collect and process these details to arrange my call, prepare my report and contact me about it by email, phone or WhatsApp, and may send me occasional updates and marketing material, using the service providers named in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. I can unsubscribe or withdraw this at any time.</span></label>
       <button class="btn btn-wine enq-go" type="submit">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></button>
       <p class="enq-note">Thirty minutes. We send you a report with three actions you can start on yourself. Your details go straight to contact@aqueenix.com.</p>
       <p class="enq-msg" id="enqMsg" aria-live="polite"></p>
@@ -2821,7 +2860,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
     <form class="news-form" id="newsForm" novalidate>
       <label class="fl" for="newsName">Short name</label>
       <input type="text" id="newsName" name="name" placeholder="First name is fine" autocomplete="given-name">
-      <label class="fl" for="newsWa">WhatsApp number</label>
+      <label class="fl" for="newsWa">Contact number</label>
       <input type="tel" id="newsWa" name="whatsapp" placeholder="+60..." autocomplete="tel">
       <fieldset class="topics" id="newsTopics"><legend>Which market do you operate in?</legend><div class="topic-chips"><label class="tchip"><input type="checkbox" name="topics" value="Malaysia"><span>Malaysia</span><em>Employment law, HRD Corp, PDPA, local practice</em></label><label class="tchip"><input type="checkbox" name="topics" value="General market"><span>General market</span><em>Operations and AI practice that applies anywhere</em></label></div><p class="topic-note">Pick both if you work across both.</p></fieldset>
       <label class="fl" for="newsEmail">Work email</label>
@@ -2843,6 +2882,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
       <b>Aqueenix Sdn. Bhd.</b>
       <span class="foot-reg">Registration No. 202501031554 (1632966-K)</span>
       Suite 33-01, 33rd Floor, Menara Keck Seng,<br>203 Jalan Bukit Bintang,<br>55100 Kuala Lumpur, Malaysia
+      <a href="tel:+60321165768">Tel: 03-2116 5768</a>
       <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>
     </address>
     <div class="foot-hrd">
@@ -3405,7 +3445,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
         '<div class="lead-grid"><div><label for="gtName">Short name</label><input id="gtName" autocomplete="name" value="'+esc(G.name||'')+'"></div>'+
         '<div><label for="gtPhone">WhatsApp number</label><input id="gtPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 012 345 6789" value="'+esc(G.phone||'')+'"></div>'+
         '<div class="gate-wide"><label for="gtEmail">Work email</label><input id="gtEmail" type="email" autocomplete="email" placeholder="name@yourcompany.com.my" value="'+esc(G.email||'')+'" aria-describedby="gtEmailMsg"><p class="ld-emsg" id="gtEmailMsg" aria-live="polite"></p></div></div>'+
-        '<label class="lead-mk" for="gtOk"><input type="checkbox" id="gtOk"'+(S.gated?' checked':'')+'><span>I agree that Aqueenix Sdn. Bhd. may save these details and my answers, and contact me about my result, as explained in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. <span lang="ms">Saya bersetuju Aqueenix Sdn. Bhd. boleh menyimpan maklumat dan jawapan saya, dan menghubungi saya berkenaan keputusan saya.</span></span></label>'+
+        '<label class="lead-mk" for="gtOk"><input type="checkbox" id="gtOk"'+(S.gated?' checked':'')+'><span>I agree that Aqueenix Sdn. Bhd. may save these details and my answers, contact me about my result, and send me occasional updates and marketing material, as explained in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. I can unsubscribe at any time. <span lang="ms">Saya bersetuju Aqueenix Sdn. Bhd. boleh menyimpan maklumat dan jawapan saya, menghubungi saya berkenaan keputusan saya, dan menghantar kemas kini serta bahan pemasaran sekali-sekala. Saya boleh berhenti melanggan pada bila-bila masa.</span></span></label>'+
         '</div>';
       next.innerHTML='Save and start <span class="arr" aria-hidden="true">&rarr;</span>';
     }else if(s.k==='mode'){
@@ -3462,7 +3502,6 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
         '<div><label for="ldCo">Company name</label><input id="ldCo" autocomplete="organization" value="'+esc(L.company||'')+'"></div>'+
         '<div><label for="ldRole">Your role</label><select id="ldRole"><option value="">Choose one</option>'+PROFILE.role.options.map(function(o,k){return '<option value="'+k+'"'+(S.p.role===k?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select></div>'+
         '<div><label for="ldWhen">How urgent is AI transformation to your business? <small>(optional)</small></label><select id="ldWhen"><option value="">Choose one</option>'+PROFILE.when.options.map(function(o,k){return '<option value="'+k+'"'+(S.p.when===k?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select></div></div>'+'<div class="lead-bn"><label for="ldBn">What is slowing the business down most right now? <small>(optional, but it changes what we send you)</small></label><textarea id="ldBn" rows="3" placeholder="In your own words. One or two sentences is plenty.">'+esc(L.bottleneck||'')+'</textarea></div>'+
-        '<label class="lead-mk" for="ldMk"><input type="checkbox" id="ldMk"'+(L.marketing?' checked':'')+'><span>Yes, also send me practical AI and operations tips and event invitations from Aqueenix. I can unsubscribe at any time.</span></label>'+
         '<p class="lead-consent">By tapping “Send my report”, I agree that Aqueenix Sdn. Bhd. may use the information I have given to prepare my Business Blocks report and to contact me about it, as explained in the <a href="privacy/" target="_blank" rel="noopener" target="_blank" rel="noopener">Privacy Notice</a>. <span lang="ms">Dengan menekan “Send my report”, saya bersetuju Aqueenix Sdn. Bhd. boleh menggunakan maklumat ini untuk menyediakan laporan saya dan menghubungi saya berkenaan laporan tersebut.</span></p>'+
         '</div>';
       next.innerHTML='Send my report <span class="arr" aria-hidden="true">&rarr;</span>';
@@ -3553,9 +3592,9 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       var gr=AQ_LEADS.checkEmail(ge);if(!gr.ok){document.getElementById('gtEmailMsg').textContent=gr.msg;return gbad('gtEmail',gr.msg)}
       if(!document.getElementById('gtOk').checked){document.getElementById('gtOk').focus();err.textContent='Please tick the box so we may save your details and answers.';return false}
       var L0=S.lead||{};
-      S.lead={name:gn,company:L0.company||'',email:gr.email,phone:gp,bottleneck:L0.bottleneck||'',marketing:!!L0.marketing};S.gated=true;
+      S.lead={name:gn,company:L0.company||'',email:gr.email,phone:gp,bottleneck:L0.bottleneck||'',marketing:true};S.gated=true;
       if(window.AQ_HOOK&&S.startSent!==gr.email){S.startSent=gr.email;
-        window.AQ_HOOK('start',gn,gr.email,gp,{name:gn,email:gr.email,whatsapp:gp,source:'Business Blocks Assessment',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice)'})}
+        window.AQ_HOOK('start',gn,gr.email,gp,{name:gn,email:gr.email,whatsapp:gp,source:'Business Blocks Assessment',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice, updates and marketing)'})}
       return true;
     }
     if(s.k==='mode'){buildSteps(MODE);return true}
@@ -3589,7 +3628,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       var r=AQ_LEADS.checkEmail(em);if(!r.ok){document.getElementById('ldEmailMsg').textContent=r.msg;return bad('ldEmail',r.msg)}
       if(ph&&!/^[+\d][\d\s-]{6,}$/.test(ph))return bad('ldPhone','Check the WhatsApp number, or leave it blank.');
       var bnEl=document.getElementById('ldBn');
-      S.lead={name:name,company:co,email:r.email,phone:ph,bottleneck:bnEl?(bnEl.value||'').trim():'',marketing:document.getElementById('ldMk').checked};
+      S.lead={name:name,company:co,email:r.email,phone:ph,bottleneck:bnEl?(bnEl.value||'').trim():'',marketing:true};
       return true;
     }
     return true;
@@ -3722,8 +3761,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       '<div class="rp-sec rp-wins"><h4>Tiny things you can do this week</h4><p class="rp-note">Each takes under 2 hours and uses tools you already have.</p><ol>'+wins+'</ol></div>'+
       '<div class="rp-sec"><h4>Your 90-day path</h4><ol class="rp-path">'+path+'</ol></div>'+
       '<div class="rp-sec rp-bench"><h4>How others are doing</h4><ul><li><b>38%</b> of Malaysian businesses use AI consistently, but <b>67%</b> of them are still on basic tools. <small>AWS, 2026</small></li><li><b>16%</b> of Malaysian organisations are fully ready for AI, and <b>38%</b> have a change plan. <small>Cisco AI Readiness Index, 2025</small></li><li><b>88%</b> of organisations worldwide use AI somewhere, but only about <b>6%</b> see real profit from it. <small>McKinsey, 2025</small></li></ul><p class="rp-note">Once enough businesses like yours have taken the assessment, this will compare you with your own industry and size.</p></div>'+
-      '<div class="rp-sec rp-ways"><h4>Three ways forward</h4><div><b>Do it yourself</b><p>Use this report and the quick wins with your own team.</p></div><div><b>Train your key person</b><p>We train the person accountable for each gap. HRD Corp Claimable where eligible.</p></div><div><b>Done with you</b><p>We design, build and run it with you, as one accountable partner.</p></div></div>'+
-      '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a></div>'+
+            '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a></div>'+
       '<p class="rp-saved" id="rpSaved" aria-live="polite"></p>'+
       '<p class="rp-method">Self-reported and indicative, based on your '+answersList().length+' answers. Not an audit. Each area is scored 0 to 100 from your answers, weighted toward people and process, and your level can be at most one above your weakest area. See our <a href="privacy/" target="_blank" rel="noopener" target="_blank" rel="noopener">Privacy Notice</a>.</p>'+
       '</div>';
@@ -4612,7 +4650,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       var href='mailto:contact@aqueenix.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
       var btn=ef.querySelector('button[type="submit"]');if(btn)btn.disabled=true;msg.textContent='Sending...';
       var topic=f('topic');var isCall=true;
-      window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('other'),page:location.pathname,priority:priority?'yes':'no',consent:'Agreed (Privacy Notice)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice)',_replyto:f('email')}).then(function(ok){
+      window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('other'),page:location.pathname,priority:priority?'yes':'no',consent:'Agreed (Privacy Notice, updates and marketing)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice, updates and marketing)',_replyto:f('email')}).then(function(ok){
         if(btn)btn.disabled=false;
         if(ok){msg.className='enq-msg ok';msg.textContent='Thank you, '+f('name')+'. Your enquiry has reached us at contact@aqueenix.com, and we will be in touch.';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0)}
         else{msg.className='enq-msg ok';msg.textContent='Your email app is opening with your enquiry ready to send to contact@aqueenix.com. If nothing opens, email us directly at contact@aqueenix.com.';window.location.href=href}
@@ -4914,6 +4952,90 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     });
   },{threshold:.42});
   secs.forEach(function(s){io.observe(s)});
+})();
+</script>
+<script>
+/* ---------- Gold thread: one line drawn down the page, a wand at its tip ---------- */
+(function(){
+  var main=document.getElementById('top');if(!main)return;
+  var REDUCE=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  var bands=[].slice.call(main.children).filter(function(e){return e.tagName==='SECTION'||e.tagName==='HEADER'||e.classList.contains('marquee')});
+  if(!bands.length)return;
+  var segs=bands.map(function(b){var s=document.createElementNS(NS,'svg');s.setAttribute('class','thr');s.setAttribute('aria-hidden','true');s.setAttribute('preserveAspectRatio','none');
+    var g=document.createElementNS(NS,'path'),l=document.createElementNS(NS,'path');g.setAttribute('class','thr-g');l.setAttribute('class','thr-l');s.appendChild(g);s.appendChild(l);
+    b.insertBefore(s,b.firstChild);return {b:b,s:s,g:g,l:l,top:0,h:0,fx:null}});
+  var wand=document.createElement('div');wand.className='wand';wand.setAttribute('aria-hidden','true');
+  wand.innerHTML='<svg viewBox="-22 -44 44 56"><g class="wand-g"><line x1="0" y1="-7" x2="0" y2="-40" stroke="#8A6312" stroke-width="3.6" stroke-linecap="round"/><line x1="0" y1="-7" x2="0" y2="-40" stroke="#E4C277" stroke-width="1.6" stroke-linecap="round"/><line x1="0" y1="-33" x2="0" y2="-40" stroke="#6E120F" stroke-width="3.6" stroke-linecap="round"/><path d="M0 -10 L2.6 -2.6 L10 0 L2.6 2.6 L0 10 L-2.6 2.6 L-10 0 L-2.6 -2.6Z" fill="#F7E3A6" stroke="#C8941E" stroke-width=".9" stroke-linejoin="round"/></g></svg>';
+  var fx=null;
+  function segAt(y){for(var i=segs.length-1;i>0;i--){if(y>=segs[i].top)return segs[i]}return segs[0]}
+  function enter(sg){curSeg=sg;if(!sg.fx){sg.fx=document.createElement('div');sg.fx.className='wand-fx';sg.fx.setAttribute('aria-hidden','true');sg.b.insertBefore(sg.fx,sg.s.nextSibling)}fx=sg.fx;sg.b.insertBefore(wand,sg.fx.nextSibling)}
+  var wg=wand.querySelector('.wand-g');
+  var curSeg=null;
+  var lut=[],len=0,mh=0,mob=false,tilt=28,lastY=-1,lastSpawn=-99,cur=[0,0],shown=false;
+  function clearTop(b){var w=b.querySelector('.wrap');var f=w&&w.firstElementChild;if(!f)return 70;var v=f.getBoundingClientRect().top-b.getBoundingClientRect().top;return Math.max(34,Math.min(120,v))}
+  function clearBot(b,nx){var w=b.querySelectorAll('.wrap');var l=w.length&&w[w.length-1].lastElementChild;if(!l)return 60;var v=nx.getBoundingClientRect().top-l.getBoundingClientRect().bottom;return Math.max(26,Math.min(110,v))}
+  function build(){
+    var mr=main.getBoundingClientRect(),W=main.clientWidth;mh=main.offsetHeight;mob=W<700;tilt=mob?14:28;
+    var ref=main.querySelector('.problem .wrap')||main.querySelector('section .wrap'),xl,xr;
+    if(ref){var rr=ref.getBoundingClientRect(),cs=getComputedStyle(ref),cl=rr.left-mr.left+parseFloat(cs.paddingLeft),cr=rr.right-mr.left-parseFloat(cs.paddingRight);
+      var rail=document.querySelector('.ch-rail'),lim=W-9;
+      if(rail&&getComputedStyle(rail).display!=='none'){var rl=rail.getBoundingClientRect().left;if(rl>W/2)lim=Math.min(lim,rl-30)}
+      xl=cl>=70?cl-42:Math.max(7,cl/2);
+      xr=Math.min(cr+42,lim);if(xr<cr+12)xr=Math.min(W-7,Math.max((cr+lim)/2,cr+(W-cr)/2));
+    }else{xl=9;xr=W-9}
+    var side=0,x=xl,d='M'+x.toFixed(1)+' 0',secs=bands.filter(function(b){return b.tagName==='SECTION'});
+    secs.forEach(function(s,i){
+      var top=s.getBoundingClientRect().top-mr.top,prev=i?secs[i-1]:bands[0];
+      var up=Math.min(clearBot(prev,s)-8,mob?44:64),dn=Math.min(clearTop(s)-12,mob?52:84);up=Math.max(up,16);dn=Math.max(dn,20);
+      var want=s.id==='voices'?0:1-side,a=top-up,b=top+dn,nx=want?xr:xl,k=(b-a)*.55;
+      d+=' L'+x.toFixed(1)+' '+a.toFixed(1)+' C'+x.toFixed(1)+' '+(a+k).toFixed(1)+','+nx.toFixed(1)+' '+(b-k).toFixed(1)+','+nx.toFixed(1)+' '+b.toFixed(1);
+      x=nx;side=want;
+    });
+    d+=' L'+x.toFixed(1)+' '+mh;
+    segs.forEach(function(sg){var r=sg.b.getBoundingClientRect();sg.top=r.top-mr.top;sg.h=r.height;
+      sg.s.setAttribute('viewBox','0 '+sg.top.toFixed(1)+' '+W+' '+sg.h.toFixed(1));sg.g.setAttribute('d',d);sg.l.setAttribute('d',d)});
+    var pl=segs[0].l;len=pl.getTotalLength();lut=[];var N=Math.max(400,Math.round(mh/40));
+    for(var q=0;q<=N;q++){var pt=pl.getPointAtLength(len*q/N);lut.push([pt.y,len*q/N,pt.x])}
+    segs.forEach(function(sg){sg.l.style.strokeDasharray=len.toFixed(1)+' '+(len+10).toFixed(1);sg.l.style.strokeDashoffset=REDUCE?0:len.toFixed(1)});
+    lastY=-1;curSeg=null;window.AQ_THREAD=lut;
+  }
+  function at(y){var lo=0,hi=lut.length-1;while(hi-lo>1){var m=(lo+hi)>>1;if(lut[m][0]<y)lo=m;else hi=m}
+    var A=lut[lo],B=lut[hi],t=B[0]===A[0]?0:Math.max(0,Math.min(1,(y-A[0])/(B[0]-A[0])));
+    return [A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t,Math.atan2(B[0]-A[0],B[2]-A[2])]}
+  function spark(n,spread){
+    if(!fx||fx.childElementCount>36)return;
+    for(var i=0;i<n;i++){var e=document.createElement('i'),sz=(mob?4:5)+Math.random()*(mob?4:6),sx=(Math.random()-.5)*2*spread,sy=(Math.random()-.5)*34-10;
+      e.style.width=e.style.height=sz.toFixed(1)+'px';e.style.marginLeft=e.style.marginTop=(-sz/2).toFixed(1)+'px';
+      e.style.setProperty('--x',(cur[0]+sx).toFixed(1)+'px');e.style.setProperty('--y',(cur[1]-curSeg.top+sy).toFixed(1)+'px');
+      e.style.setProperty('--dx',((Math.random()-.5)*(mob?4:16)).toFixed(1)+'px');e.style.setProperty('--dy',(-10-Math.random()*22).toFixed(1)+'px');
+      e.style.setProperty('--t',(.7+Math.random()*.7).toFixed(2)+'s');if(Math.random()>.6)e.style.background='#D9AE50';
+      e.addEventListener('animationend',function(){if(this.parentNode)this.parentNode.removeChild(this)});fx.appendChild(e)}
+  }
+  function draw(){
+    if(REDUCE||!len)return;
+    var vh=window.innerHeight,mt=main.getBoundingClientRect().top,y=Math.max(0,Math.min(mh,-mt+vh*.56));
+    if(Math.abs(y-lastY)<.5)return;
+    var r=at(y),off=(len-r[0]).toFixed(1);
+    for(var i=0;i<segs.length;i++){var sg=segs[i];if(sg.top+sg.h<-mt-300||sg.top>-mt+vh+300)continue;sg.l.style.strokeDashoffset=off}
+    cur=[r[1],y];var sgn=segAt(y);if(sgn!==curSeg)enter(sgn);
+    var ang=r[2]*180/Math.PI-90,lean=(r[1]<main.clientWidth/2?1:-1)*tilt;
+    wand.style.transform='translate3d('+r[1].toFixed(1)+'px,'+(y-curSeg.top).toFixed(1)+'px,0)';
+    wg.setAttribute('transform','rotate('+(ang*.55+lean).toFixed(1)+')');
+    if(!shown){shown=true;wand.classList.add('on')}
+    if(lastY>=0&&Math.abs(y-lastSpawn)>(mob?22:16)){lastSpawn=y;spark(mob?1:2,mob?5:15)}
+    lastY=y;
+  }
+  var ticking=false;function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(function(){ticking=false;draw()})}
+  function boot(){build();draw();
+    window.addEventListener('scroll',onScroll,{passive:true});
+    if(window.ScrollTrigger){ScrollTrigger.addEventListener('refresh',function(){build();draw()})}
+    else window.addEventListener('resize',function(){build();draw()});
+    if(window.AQ&&AQ.lenis&&AQ.lenis.on)AQ.lenis.on('scroll',onScroll);
+    if(window.ResizeObserver){var rt=0,lh=main.offsetHeight;new ResizeObserver(function(){var nh=main.offsetHeight;if(Math.abs(nh-lh)<2)return;lh=nh;clearTimeout(rt);rt=setTimeout(function(){build();draw()},180)}).observe(main)}
+    if(!REDUCE)setInterval(function(){if(!document.hidden&&shown)spark(1,mob?5:13)},1300);
+  }
+  if(document.readyState==='complete')setTimeout(boot,700);else window.addEventListener('load',function(){setTimeout(boot,700)});
 })();
 </script>
 </body>

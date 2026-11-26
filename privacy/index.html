@@ -1213,11 +1213,25 @@ html{scroll-behavior:auto}
 .legal-bm .legal-note{font-size:14px;color:#7A6660;font-style:italic;margin-bottom:26px}
 
 .legal-h3{font-size:25px;line-height:1.15;margin:28px 0 8px;color:#6E120F}
-.legal-table{overflow-x:auto;margin:14px 0 18px;border:1px solid rgba(110,18,15,.16);border-radius:14px}
+.legal-doc,.legal-doc>*{min-width:0;max-width:100%}
+.legal-table{overflow-x:auto;max-width:100%;margin:14px 0 18px;border:1px solid rgba(110,18,15,.16);border-radius:14px}
 .legal-table table{width:100%;min-width:560px;border-collapse:collapse;font-size:14.5px;line-height:1.5}
 .legal-table th{text-align:left;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8B1E2D;padding:12px 14px;background:rgba(200,148,30,.1);border-bottom:1px solid rgba(110,18,15,.16)}
 .legal-table td{padding:12px 14px;vertical-align:top;border-bottom:1px solid rgba(110,18,15,.08)}
 .legal-table tr:last-child td{border-bottom:0}
+@media(max-width:700px){
+  .legal-table{overflow:visible;border:0;border-radius:0}
+  .legal-table table{min-width:0;display:block;font-size:15px}
+  .legal-table thead{display:none}
+  .legal-table tbody{display:grid;gap:12px}
+  .legal-table tr{display:block;border:1px solid rgba(110,18,15,.16);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.35)}
+  .legal-table td{display:block;padding:0;border:0;overflow-wrap:anywhere}
+  .legal-table td+td{margin-top:10px}
+  .legal-table td::before{content:attr(data-l);display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8B1E2D;margin-bottom:2px}
+  .legal-table td:first-child{font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;font-weight:600;line-height:1.2}
+  .legal-table td:first-child::before{display:none}
+}
+
 </style>
 </head>
 <body class="light-top">
@@ -1273,12 +1287,12 @@ html{scroll-behavior:auto}
 <div class="legal-table"><table>
 <thead><tr><th>Form</th><th>What we collect</th><th>What we use it for</th><th>How we may contact you</th></tr></thead>
 <tbody>
-<tr><td>Enquiry form (strategy call)</td><td>Your contact details and your answers about your business</td><td>To reply, arrange and prepare your call, send you the report from the call, and decide whether we are the right fit</td><td>Email, phone or WhatsApp</td></tr>
-<tr><td>Newsletter sign-up</td><td>Name, work email, WhatsApp number if given, and your market</td><td>To send The Operator&rsquo;s Edge on the topics you picked</td><td>Email, and WhatsApp if you gave a number</td></tr>
-<tr><td>Business Blocks Assessment</td><td>Name, mobile number, work email, your answers, your score, and how far you got</td><td>To prepare and send your report, and to follow up about it</td><td>Email, phone or WhatsApp</td></tr>
-<tr><td>2-minute department checks</td><td>Name, mobile number, work email, your answers and your score</td><td>To show you your result and to follow up about it</td><td>Email, phone or WhatsApp</td></tr>
+<tr><td data-l="Form">Enquiry form (strategy call)</td><td data-l="What we collect">Your contact details and your answers about your business</td><td data-l="What we use it for">To reply, arrange and prepare your call, send you the report from the call, and decide whether we are the right fit</td><td data-l="How we may contact you">Email, phone or WhatsApp</td></tr>
+<tr><td data-l="Form">Newsletter sign-up</td><td data-l="What we collect">Name, work email, WhatsApp number if given, and your market</td><td data-l="What we use it for">To send The Operator&rsquo;s Edge on the topics you picked</td><td data-l="How we may contact you">Email, and WhatsApp if you gave a number</td></tr>
+<tr><td data-l="Form">Business Blocks Assessment</td><td data-l="What we collect">Name, mobile number, work email, your answers, your score, and how far you got</td><td data-l="What we use it for">To prepare and send your report, and to follow up about it</td><td data-l="How we may contact you">Email, phone or WhatsApp</td></tr>
+<tr><td data-l="Form">2-minute department checks</td><td data-l="What we collect">Name, mobile number, work email, your answers and your score</td><td data-l="What we use it for">To show you your result and to follow up about it</td><td data-l="How we may contact you">Email, phone or WhatsApp</td></tr>
 </tbody></table></div>
-<p>If you only gave your details to receive a report or a result, we will not add you to the newsletter unless you ticked that box or signed up separately.</p>
+<p>When you submit any of these forms, you also agree that we may send you occasional updates and marketing material from Aqueenix, such as practical notes, new services and event invitations, by email or WhatsApp. Every message includes a way to unsubscribe, and you can stop them at any time by emailing <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>. Stopping marketing messages does not affect your call, your report or your result.</p>
 <h2>5. Your choice to give us personal data</h2>
 <p>Giving us personal data is your choice. If you do not give us the details we need, we may not be able to reply to your enquiry, deliver our services, register you for training or process an HRD Corp claim.</p>
 <p>Where we rely on your consent, you can withdraw it at any time by emailing <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>. Withdrawing consent does not affect what we did before, and we may still keep some data where the law requires us to.</p>
@@ -1298,12 +1312,12 @@ html{scroll-behavior:auto}
 <div class="legal-table"><table>
 <thead><tr><th>Provider</th><th>What it does for us</th><th>What it handles</th></tr></thead>
 <tbody>
-<tr><td>Chatbees (Chatbees Solutions, Malaysia)</td><td>Our customer records and follow-up system</td><td>Everything you submit through our forms, the assessment and the department checks, and the pages you viewed</td></tr>
-<tr><td>FormSubmit</td><td>Sends a copy of an enquiry, newsletter sign-up or assessment result to our mailbox</td><td>The details in that submission</td></tr>
-<tr><td>Microsoft 365</td><td>Our email and document storage</td><td>Emails to and from us, and the copies above</td></tr>
-<tr><td>GitHub Pages</td><td>Hosts this website</td><td>Technical data from your browser, such as your IP address</td></tr>
-<tr><td>Google Fonts, cdnjs (Cloudflare) and unpkg</td><td>Deliver fonts and code files the site needs</td><td>Technical data from your browser, such as your IP address</td></tr>
-<tr><td>WhatsApp (Meta)</td><td>Messaging, if you choose to message us or ask us to reach you there</td><td>Your number and the messages exchanged</td></tr>
+<tr><td data-l="Provider">Chatbees (Chatbees Solutions, Malaysia)</td><td data-l="What it does for us">Our customer records and follow-up system</td><td data-l="What it handles">Everything you submit through our forms, the assessment and the department checks, and the pages you viewed</td></tr>
+<tr><td data-l="Provider">FormSubmit</td><td data-l="What it does for us">Sends a copy of an enquiry, newsletter sign-up or assessment result to our mailbox</td><td data-l="What it handles">The details in that submission</td></tr>
+<tr><td data-l="Provider">Microsoft 365</td><td data-l="What it does for us">Our email and document storage</td><td data-l="What it handles">Emails to and from us, and the copies above</td></tr>
+<tr><td data-l="Provider">GitHub Pages</td><td data-l="What it does for us">Hosts this website</td><td data-l="What it handles">Technical data from your browser, such as your IP address</td></tr>
+<tr><td data-l="Provider">Google Fonts, cdnjs (Cloudflare) and unpkg</td><td data-l="What it does for us">Deliver fonts and code files the site needs</td><td data-l="What it handles">Technical data from your browser, such as your IP address</td></tr>
+<tr><td data-l="Provider">WhatsApp (Meta)</td><td data-l="What it does for us">Messaging, if you choose to message us or ask us to reach you there</td><td data-l="What it handles">Your number and the messages exchanged</td></tr>
 </tbody></table></div>
 <p>Some of these providers store or process data outside Malaysia. Section 7 explains how we handle that. If we change or add a provider, we will update this list.</p>
 
@@ -1353,7 +1367,7 @@ html{scroll-behavior:auto}
 <p>If you are not happy with how we have handled your personal data, please talk to us first. You may also contact the Personal Data Protection Commissioner of Malaysia.</p>
 
 <h2>12. Newsletter and marketing</h2>
-<p>We only send our newsletter and marketing updates to people who have signed up or who have agreed to receive them. Every email will include a way to unsubscribe. You can also email <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a> at any time to stop marketing messages.</p>
+<p>We only send our newsletter and marketing material to people who have signed up, or who agreed to receive them when they submitted a form on this website. Every email will include a way to unsubscribe. You can also email <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a> at any time to stop marketing messages.</p>
 
 <h2>13. If a data breach happens</h2>
 <p>We have a process for responding to personal data breaches. If a breach happens, we will act quickly to contain it and reduce harm. Where the PDPA requires it, we will notify the Personal Data Protection Commissioner and the people affected, within the time limits set by the law and its guidelines.</p>
@@ -1439,12 +1453,12 @@ Suite 33-01, 33rd Floor, Menara Keck Seng, 203 Jalan Bukit Bintang, 55100 Kuala 
 <div class="legal-table"><table>
 <thead><tr><th>Borang</th><th>Apa yang kami kumpul</th><th>Kegunaannya</th><th>Cara kami mungkin menghubungi anda</th></tr></thead>
 <tbody>
-<tr><td>Borang pertanyaan (panggilan strategi)</td><td>Butiran hubungan anda dan jawapan anda tentang perniagaan anda</td><td>Untuk membalas, mengatur dan menyediakan panggilan anda, menghantar laporan daripada panggilan itu, dan menentukan sama ada kami sesuai untuk anda</td><td>E-mel, telefon atau WhatsApp</td></tr>
-<tr><td>Langganan surat berita</td><td>Nama, e-mel kerja, nombor WhatsApp jika diberikan, dan pasaran anda</td><td>Untuk menghantar The Operator&rsquo;s Edge mengenai topik yang anda pilih</td><td>E-mel, dan WhatsApp jika anda memberikan nombor</td></tr>
-<tr><td>Penilaian Business Blocks</td><td>Nama, nombor telefon bimbit, e-mel kerja, jawapan anda, skor anda, dan sejauh mana anda melengkapkannya</td><td>Untuk menyediakan dan menghantar laporan anda, serta membuat susulan mengenainya</td><td>E-mel, telefon atau WhatsApp</td></tr>
-<tr><td>Semakan jabatan 2 minit</td><td>Nama, nombor telefon bimbit, e-mel kerja, jawapan dan skor anda</td><td>Untuk menunjukkan keputusan anda dan membuat susulan mengenainya</td><td>E-mel, telefon atau WhatsApp</td></tr>
+<tr><td data-l="Borang">Borang pertanyaan (panggilan strategi)</td><td data-l="Apa yang kami kumpul">Butiran hubungan anda dan jawapan anda tentang perniagaan anda</td><td data-l="Kegunaannya">Untuk membalas, mengatur dan menyediakan panggilan anda, menghantar laporan daripada panggilan itu, dan menentukan sama ada kami sesuai untuk anda</td><td data-l="Cara kami mungkin menghubungi anda">E-mel, telefon atau WhatsApp</td></tr>
+<tr><td data-l="Borang">Langganan surat berita</td><td data-l="Apa yang kami kumpul">Nama, e-mel kerja, nombor WhatsApp jika diberikan, dan pasaran anda</td><td data-l="Kegunaannya">Untuk menghantar The Operator&rsquo;s Edge mengenai topik yang anda pilih</td><td data-l="Cara kami mungkin menghubungi anda">E-mel, dan WhatsApp jika anda memberikan nombor</td></tr>
+<tr><td data-l="Borang">Penilaian Business Blocks</td><td data-l="Apa yang kami kumpul">Nama, nombor telefon bimbit, e-mel kerja, jawapan anda, skor anda, dan sejauh mana anda melengkapkannya</td><td data-l="Kegunaannya">Untuk menyediakan dan menghantar laporan anda, serta membuat susulan mengenainya</td><td data-l="Cara kami mungkin menghubungi anda">E-mel, telefon atau WhatsApp</td></tr>
+<tr><td data-l="Borang">Semakan jabatan 2 minit</td><td data-l="Apa yang kami kumpul">Nama, nombor telefon bimbit, e-mel kerja, jawapan dan skor anda</td><td data-l="Kegunaannya">Untuk menunjukkan keputusan anda dan membuat susulan mengenainya</td><td data-l="Cara kami mungkin menghubungi anda">E-mel, telefon atau WhatsApp</td></tr>
 </tbody></table></div>
-<p>Jika anda memberikan butiran anda hanya untuk menerima laporan atau keputusan, kami tidak akan menambah anda ke surat berita melainkan anda menanda kotak tersebut atau mendaftar secara berasingan.</p>
+<p>Apabila anda menghantar mana-mana borang ini, anda juga bersetuju bahawa kami boleh menghantar kemas kini dan bahan pemasaran daripada Aqueenix sekali-sekala, seperti nota praktikal, perkhidmatan baharu dan jemputan acara, melalui e-mel atau WhatsApp. Setiap mesej menyertakan cara untuk berhenti melanggan, dan anda boleh menghentikannya pada bila-bila masa dengan menghantar e-mel ke <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>. Menghentikan mesej pemasaran tidak menjejaskan panggilan, laporan atau keputusan anda.</p>
 <h2>5. Pilihan anda untuk memberikan data peribadi</h2>
 <p>Memberikan data peribadi kepada kami adalah pilihan anda. Jika anda tidak memberikan butiran yang kami perlukan, kami mungkin tidak dapat membalas pertanyaan anda, menyampaikan perkhidmatan kami, mendaftarkan anda untuk latihan atau memproses tuntutan HRD Corp.</p>
 <p>Di mana kami bergantung kepada persetujuan anda, anda boleh menariknya balik pada bila-bila masa dengan menghantar e-mel ke <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>. Penarikan balik persetujuan tidak menjejaskan apa yang telah kami lakukan sebelum itu, dan kami mungkin masih menyimpan sebahagian data di mana undang-undang menghendakinya.</p>
@@ -1464,12 +1478,12 @@ Suite 33-01, 33rd Floor, Menara Keck Seng, 203 Jalan Bukit Bintang, 55100 Kuala 
 <div class="legal-table"><table>
 <thead><tr><th>Penyedia</th><th>Fungsinya untuk kami</th><th>Apa yang dikendalikannya</th></tr></thead>
 <tbody>
-<tr><td>Chatbees (Chatbees Solutions, Malaysia)</td><td>Sistem rekod pelanggan dan susulan kami</td><td>Semua yang anda hantar melalui borang, penilaian dan semakan jabatan kami, serta halaman yang anda lawati</td></tr>
-<tr><td>FormSubmit</td><td>Menghantar salinan pertanyaan, langganan surat berita atau keputusan penilaian ke peti mel kami</td><td>Butiran dalam penghantaran tersebut</td></tr>
-<tr><td>Microsoft 365</td><td>E-mel dan storan dokumen kami</td><td>E-mel kepada dan daripada kami, serta salinan di atas</td></tr>
-<tr><td>GitHub Pages</td><td>Mengehoskan laman web ini</td><td>Data teknikal daripada pelayar anda, seperti alamat IP anda</td></tr>
-<tr><td>Google Fonts, cdnjs (Cloudflare) dan unpkg</td><td>Menghantar fon dan fail kod yang diperlukan oleh laman ini</td><td>Data teknikal daripada pelayar anda, seperti alamat IP anda</td></tr>
-<tr><td>WhatsApp (Meta)</td><td>Pemesejan, jika anda memilih untuk menghantar mesej kepada kami atau meminta kami menghubungi anda di sana</td><td>Nombor anda dan mesej yang ditukar</td></tr>
+<tr><td data-l="Penyedia">Chatbees (Chatbees Solutions, Malaysia)</td><td data-l="Fungsinya untuk kami">Sistem rekod pelanggan dan susulan kami</td><td data-l="Apa yang dikendalikannya">Semua yang anda hantar melalui borang, penilaian dan semakan jabatan kami, serta halaman yang anda lawati</td></tr>
+<tr><td data-l="Penyedia">FormSubmit</td><td data-l="Fungsinya untuk kami">Menghantar salinan pertanyaan, langganan surat berita atau keputusan penilaian ke peti mel kami</td><td data-l="Apa yang dikendalikannya">Butiran dalam penghantaran tersebut</td></tr>
+<tr><td data-l="Penyedia">Microsoft 365</td><td data-l="Fungsinya untuk kami">E-mel dan storan dokumen kami</td><td data-l="Apa yang dikendalikannya">E-mel kepada dan daripada kami, serta salinan di atas</td></tr>
+<tr><td data-l="Penyedia">GitHub Pages</td><td data-l="Fungsinya untuk kami">Mengehoskan laman web ini</td><td data-l="Apa yang dikendalikannya">Data teknikal daripada pelayar anda, seperti alamat IP anda</td></tr>
+<tr><td data-l="Penyedia">Google Fonts, cdnjs (Cloudflare) dan unpkg</td><td data-l="Fungsinya untuk kami">Menghantar fon dan fail kod yang diperlukan oleh laman ini</td><td data-l="Apa yang dikendalikannya">Data teknikal daripada pelayar anda, seperti alamat IP anda</td></tr>
+<tr><td data-l="Penyedia">WhatsApp (Meta)</td><td data-l="Fungsinya untuk kami">Pemesejan, jika anda memilih untuk menghantar mesej kepada kami atau meminta kami menghubungi anda di sana</td><td data-l="Apa yang dikendalikannya">Nombor anda dan mesej yang ditukar</td></tr>
 </tbody></table></div>
 <p>Sebahagian penyedia ini menyimpan atau memproses data di luar Malaysia. Seksyen 7 menerangkan cara kami mengendalikannya. Jika kami menukar atau menambah penyedia, kami akan mengemas kini senarai ini.</p>
 
@@ -1518,7 +1532,7 @@ Suite 33-01, 33rd Floor, Menara Keck Seng, 203 Jalan Bukit Bintang, 55100 Kuala 
 <p>Untuk menggunakan mana-mana hak ini, e-mel <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>. Kami mungkin perlu mengesahkan identiti anda sebelum bertindak atas sesuatu permintaan. Kami akan membalas dalam tempoh yang dibenarkan oleh APDP. Dalam sesetengah keadaan, undang-undang membenarkan kami menolak atau mengehadkan permintaan, atau mengenakan bayaran yang dibenarkan undang-undang. Jika demikian, kami akan memberitahu anda sebabnya.</p>
 
 <h2>12. Surat berita dan pemasaran</h2>
-<p>Kami hanya menghantar surat berita dan kemas kini pemasaran kepada mereka yang telah melanggan atau bersetuju menerimanya. Setiap e-mel akan menyertakan cara untuk berhenti melanggan. Anda juga boleh menghantar e-mel ke <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a> pada bila-bila masa untuk menghentikan mesej pemasaran.</p>
+<p>Kami hanya menghantar surat berita dan bahan pemasaran kepada mereka yang telah melanggan, atau yang bersetuju menerimanya semasa menghantar borang di laman web ini. Setiap e-mel akan menyertakan cara untuk berhenti melanggan. Anda juga boleh menghantar e-mel ke <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a> pada bila-bila masa untuk menghentikan mesej pemasaran.</p>
 
 <h2>13. Jika berlaku pelanggaran data</h2>
 <p>Kami mempunyai proses untuk bertindak balas terhadap pelanggaran data peribadi. Jika pelanggaran berlaku, kami akan bertindak pantas untuk membendungnya dan mengurangkan kemudaratan. Di mana APDP menghendakinya, kami akan memaklumkan Pesuruhjaya Perlindungan Data Peribadi dan individu yang terjejas, dalam tempoh yang ditetapkan oleh undang-undang dan garis panduannya.</p>
@@ -1580,6 +1594,7 @@ Suite 33-01, 33rd Floor, Menara Keck Seng, 203 Jalan Bukit Bintang, 55100 Kuala 
     <address class="foot-addr">
       <b>Aqueenix Sdn. Bhd.</b>
       Suite 33-01, 33rd Floor, Menara Keck Seng,<br>203 Jalan Bukit Bintang,<br>55100 Kuala Lumpur, Malaysia
+      <a href="tel:+60321165768">Tel: 03-2116 5768</a>
       <a href="mailto:contact@aqueenix.com">contact@aqueenix.com</a>
     </address>
     <div class="foot-hrd">

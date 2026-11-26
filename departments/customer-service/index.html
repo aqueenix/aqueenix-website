@@ -19,7 +19,7 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 :root{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
- --bg:#FBF4EC;--ink:#2A2220;--muted:#6B5C55;--em:#8B1E2D;--gold:#C8941E;--gold-l:#D9AE50;--cream:#F5EFE6;--blush:#F6E3E2;--line:rgba(110,18,15,.14);--card:#FFFDFA;--dark:#2A2220}
+ --bg:#FBF4EC;--ink:#2A2220;--muted:#6B5C55;--em:#8B1E2D;--gold:#C8941E;--gold-l:#D9AE50;--cream:#F5EFE6;--blush:#EDE3D2;--line:rgba(110,18,15,.14);--card:#FFFDFA;--dark:#2A2220}
 img{max-width:100%;height:auto;display:block}
 .deptback{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans,inherit);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A6A33;text-decoration:none;padding:8px 0}
 .deptback:hover{color:#6E120F}
@@ -259,7 +259,7 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
       '<div class="dq-f"><label for="dqN">Short name</label><input type="text" id="dqN" autocomplete="name" required></div>'+
       '<div class="dq-f"><label for="dqP">Mobile, for WhatsApp</label><input type="tel" id="dqP" autocomplete="tel" inputmode="tel" placeholder="e.g. 012 345 6789" required></div>'+
       '<div class="dq-f full"><label for="dqE">Work email</label><input type="email" id="dqE" autocomplete="email" required></div>'+
-      '<label class="dq-consent"><input type="checkbox" id="dqC"><span>I agree that Aqueenix may save these details and my answers, and contact me about my result, as set out in the <a href="../../privacy/">Privacy Notice</a>.</span></label>'+
+      '<label class="dq-consent"><input type="checkbox" id="dqC"><span>I agree that Aqueenix may save these details and my answers, contact me about my result, and send me occasional updates and marketing material, as set out in the <a href="../../privacy/">Privacy Notice</a>. I can unsubscribe at any time.</span></label>'+
       '<p class="dq-err" id="dqErr" role="alert"></p>'+
       '<div class="dq-actions"><button type="submit" class="dq-go">Save and start <span aria-hidden="true">&rarr;</span></button></div></form>';
     var f=document.getElementById('dqForm');
@@ -271,7 +271,7 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='Please enter a valid email address.';f.dqE.focus();return}
       if(!f.dqC.checked){err.textContent='Please tick the box so we may save your details and answers.';f.dqC.focus();return}
       lead={name:n,phone:p,email:em};i=0;
-      if(window.fetch&&startSent!==em){startSent=em;fetch(START,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:n,contactEmail:em,contactPhone:e164(p),data:{name:n,email:em,whatsapp:p,source:'Customer Service department check',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice)'}})}).catch(function(){})}
+      if(window.fetch&&startSent!==em){startSent=em;fetch(START,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:n,contactEmail:em,contactPhone:e164(p),data:{name:n,email:em,whatsapp:p,source:'Customer Service department check',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice, updates and marketing)'}})}).catch(function(){})}
       ask();focusTop()});
   }
   function ask(){
