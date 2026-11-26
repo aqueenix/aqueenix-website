@@ -269,6 +269,8 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
     {min:6,n:'Some of it holds',d:'Parts are clear and parts depend on memory. Tidy the weak spots below first, and AI will have something solid to work on.'},
     {min:0,n:'Foundation first',d:'Most of this runs on people remembering. That is normal at your size, and it is the right place to start, before any AI.'}
   ];
+  var START='https://my.chatbees.io/api/webhooks/flow/10187/bd87b889f1f602b4e8c8f81a129679b80b962887060c5625d27c071e653b349f',startSent='';
+  function e164(v){var s=String(v||'').replace(/[\s().-]/g,'');if(/^0\d{8,10}$/.test(s))return '+6'+s;if(/^60\d{8,10}$/.test(s))return '+'+s;return s}
   var lead={},ans=[],i=0;
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function focusTop(){var h=body.querySelector('[data-f]');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
@@ -290,7 +292,9 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
       if(p.replace(/\D/g,'').length<8){err.textContent='Please enter a mobile number we can reach on WhatsApp.';f.dqP.focus();return}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='Please enter a valid email address.';f.dqE.focus();return}
       if(!f.dqC.checked){err.textContent='Please tick the box so we may save your details and answers.';f.dqC.focus();return}
-      lead={name:n,phone:p,email:em};i=0;ask();focusTop()});
+      lead={name:n,phone:p,email:em};i=0;
+      if(window.fetch&&startSent!==em){startSent=em;fetch(START,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:n,contactEmail:em,contactPhone:e164(p),data:{name:n,email:em,whatsapp:p,source:'HR department check',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice)'}})}).catch(function(){})}
+      ask();focusTop()});
   }
   function ask(){
     var q=Q[i],h='<p class="dq-prog"><span>Question '+(i+1)+' of '+Q.length+'</span><span class="dq-bar" aria-hidden="true"><i style="width:'+Math.round(i/Q.length*100)+'%"></i></span></p>'+
@@ -323,7 +327,7 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
     Q.forEach(function(q,x){data['hr_'+q.k]=q.o[ans[x]]});
     var sent=document.getElementById('dqSent');
     if(!window.fetch){return}
-    fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:lead.name,contactEmail:lead.email,contactPhone:lead.phone,data:data})})
+    fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:lead.name,contactEmail:lead.email,contactPhone:e164(lead.phone),data:data})})
       .then(function(r){if(sent)sent.textContent=r.ok?'Saved. We have your result, '+lead.name.split(' ')[0]+'.':'We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'})
       .catch(function(){if(sent)sent.textContent='We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'});
   }

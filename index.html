@@ -2232,6 +2232,11 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
   .founder-photo.april img{flex:0 0 100%;width:100%;height:340px}
   .founder-photo.april .chip{position:relative;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;font-size:11.5px;padding:8px 12px}
 }
+
+.enq [hidden]{display:none!important}
+.gate-lede{margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--muted-t)}
+.lead-grid .gate-wide{grid-column:1/-1}
+@media(max-width:560px){.lead-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -2259,7 +2264,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
       </ol>
       <div class="ctas h-in">
         <a class="btn btn-wine" href="#contact" data-topic="Book a 30-minute strategy call">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-line" href="#quiz">Or take the 4-minute assessment</a>
+        <a class="btn btn-line" href="#quiz">Or take the 3-minute assessment</a>
       </div>
       <p class="cta-promise h-in"><i aria-hidden="true"></i>Thirty minutes. We send you a report with three actions you can start on yourself.</p>
     </div>
@@ -2514,7 +2519,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
         <p class="g-status" id="gStatus" aria-live="polite"></p>
       </div>
     </div>
-    <p class="game-next"><a href="#quiz">Take the 4-minute assessment now <span aria-hidden="true">&rarr;</span></a></p>
+    <p class="game-next"><a href="#quiz">Take the 3-minute assessment now <span aria-hidden="true">&rarr;</span></a></p>
   </div>
 </section>
 
@@ -2642,7 +2647,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
     <div class="reveal">
       <p class="ch-mark"><span>08</span>Start here</p>
       <div class="eyebrow">The Business Blocks Assessment</div>
-      <h2 id="chk-h">Your AI readiness, scored <em>in four minutes or twelve.</em></h2>
+      <h2 id="chk-h">Your AI readiness, scored <em>in three minutes or twelve.</em></h2>
       <p class="lead">A structured assessment of your foundation and your AI readiness. You receive a management-ready report: your maturity level, your top three gaps, practical first steps and a 90-day path.</p>
     </div>
     <div class="chk-grid">
@@ -2651,7 +2656,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
         <h3>The Business Blocks Assessment</h3>
         <p>Choose a short read or the full assessment. It covers eight areas of your business, weighted towards the parts you live in every day: records and paperwork, process and know-how, communication and follow-through. Built on years of hands-on operations and audit work, and written for Malaysian businesses.</p>
         <ul class="chk-meta">
-          <li>Short read or full<small>About 4 minutes, or about 12</small></li>
+          <li>Short read or full<small>About 3 minutes, or about 12</small></li>
           <li>Tailored to you<small>14 industries, 4 company sizes</small></li>
           <li>Management-ready report<small>Maturity level, top gaps, 90-day plan</small></li>
           <li>Complimentary<small>Often a paid consultant engagement</small></li>
@@ -2703,43 +2708,52 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
     </div>
     <form class="enq" id="enqForm" novalidate>
       <label for="enqTopic">I am here for</label>
-      <select id="enqTopic" name="topic"><option>A strategy call for my business</option><option>Train an AI Implementor</option><option>Training and adoption (HRD Corp Claimable)</option><option>Something else</option></select>
+      <select id="enqTopic" name="topic"><option>A strategy call for my business</option><option>Training an AI Implementor, and adoption for a core department</option><option>Something else</option></select>
+      <div id="enqOtherBox" hidden><label for="enqOther">Tell us what you have in mind</label><input id="enqOther" name="other"></div>
       <div class="enq-row">
-        <div><label for="enqName">Full name</label><input id="enqName" name="name" autocomplete="name" required></div>
-        <div><label for="enqCo">Company</label><input id="enqCo" name="company" autocomplete="organization" required></div>
+        <div><label for="enqName">What should we call you?</label><input id="enqName" name="name" autocomplete="name" required></div>
+        <div><label for="enqCo">Company name</label><input id="enqCo" name="company" autocomplete="organization" required></div>
       </div>
       <div class="enq-row">
-        <div><label for="enqEmail">Work email <small>We send the written action plan here.</small></label><input id="enqEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com.my" required></div>
-        <div><label for="enqPhone">Mobile number <small>WhatsApp, for anything urgent about your call.</small></label><input id="enqPhone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div><label for="enqEmail">Work email <small>We send your report here.</small></label><input id="enqEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com.my" required></div>
+        <div><label for="enqPhone">Mobile <small>For WhatsApp and calls.</small></label><input id="enqPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
       </div>
       <div class="enq-row">
-        <div><label for="enqRole">Your role</label><input id="enqRole" name="role" autocomplete="organization-title"></div>
-        <div><label for="enqSize">How many people in the business, including you?</label><select id="enqSize" name="size" required><option value="">Choose one</option><option>1 to 9</option><option>10 to 30</option><option>31 to 60</option><option>61 and above</option></select></div>
+        <div><label for="enqRole">What is your role in the business?</label><select id="enqRole" name="role" required><option value="">Choose one</option><option>I am the founder or owner</option><option>I am the CEO or Managing Director</option><option>I am a director or partner</option><option>I lead a department</option><option>I am part of the team</option></select></div>
+        <div><label for="enqSize">How many people are in the business, including you?</label><select id="enqSize" name="size" required><option value="">Choose one</option><option>1 to 9</option><option>10 to 30</option><option>31 to 60</option><option>61 and above</option></select></div>
       </div>
       <div class="enq-row">
         <div><label for="enqState">Where is your team based?</label><select id="enqState" name="state"><option value="">Choose one</option><option>Johor</option><option>Kedah</option><option>Kelantan</option><option>Melaka</option><option>Negeri Sembilan</option><option>Pahang</option><option>Perak</option><option>Perlis</option><option>Pulau Pinang</option><option>Sabah</option><option>Sarawak</option><option>Selangor</option><option>Terengganu</option><option>W.P. Kuala Lumpur</option><option>W.P. Labuan</option><option>W.P. Putrajaya</option><option>Outside Malaysia</option></select></div>
-        <div><label for="enqSource">How did you hear about us? <small>Optional.</small></label><select id="enqSource" name="source"><option value="">Choose one</option><option>LinkedIn</option><option>Referral</option><option>Email</option><option>Search</option><option>An association or group</option><option>Other</option></select></div>
+        <div><label for="enqSource">How did you find us?</label><select id="enqSource" name="source"><option value="">Choose one</option><option>I met you at an event</option><option>I saw you on Instagram</option><option>I came through your website</option><option>I searched on Google or online</option><option>An AI assistant recommended you</option><option>Someone referred me</option></select></div>
       </div>
-      <label for="enqText" id="enqTextL">Which task would you hand over first, if it ran without you? <small>April reads every answer.</small></label>
-      <textarea id="enqText" name="message" rows="4" placeholder="For example: checking claims, chasing payments, replying to enquiries after hours." required></textarea>
-      <label for="enqGood">What does good look like to you? <small>A year from now, what has changed?</small></label>
-      <textarea id="enqGood" name="good" rows="3" placeholder="For example: month-end closes in three days, and the team runs the week without me in every meeting."></textarea>
+      <label for="enqGood">What does good look like in your business? <small>The outcome you want us to bring you.</small></label>
+      <textarea id="enqGood" name="good" rows="3" placeholder="For example: month-end closes in three days, and the team runs the week without me in every meeting." required></textarea>
+      <label for="enqText" id="enqTextL">What is holding that back right now? <small>April reads every answer.</small></label>
+      <textarea id="enqText" name="message" rows="3" placeholder="For example: everything waits for my approval, and nobody owns the follow-up." required></textarea>
       <div class="enq-row">
-        <div><label for="enqDecider">Who decides on investing in this? <small>There is no wrong answer; it tells us how to prepare.</small></label><select id="enqDecider" name="decider" required><option value="">Choose one</option><option>I decide</option><option>I decide with a partner or the board</option><option>I recommend, someone else approves</option><option>Not involved yet, here to learn</option></select></div>
-        <div><label for="enqReady">When would you want this running?</label><select id="enqReady" name="ready" required><option value="">Choose one</option><option>Now</option><option>Within three months</option><option>Later this year</option><option>Exploring for now</option></select></div>
+        <div><label for="enqDecider">Who decides on this in your business?</label><select id="enqDecider" name="decider" required><option value="">Choose one</option><option>I decide</option><option>I decide with a partner or the board</option><option>I recommend, someone else approves</option><option>I am here to learn first</option></select></div>
+        <div><label for="enqReady">How urgent is AI transformation to your business?</label><select id="enqReady" name="ready" required><option value="">Choose one</option><option>I need to start this month</option><option>I want to start within 3 months</option><option>I am planning for the next 6 months</option><option>I am just exploring for now</option></select></div>
       </div>
-      <label for="enqBudget">What have you set aside in mind? <small>A range is enough. It tells us what to scope, not what to charge.</small></label>
+      <div class="enq-row">
+        <div><label for="enqTrained">Has your team attended AI training before?</label><select id="enqTrained" name="trained" required><option value="">Choose one</option><option>Yes, and we use it in daily work</option><option>Yes, but little has changed since</option><option>Not yet</option></select></div>
+        <div><label for="enqHrdc">Is HRD Corp levy part of your plan?</label><select id="enqHrdc" name="hrdc" required><option value="">Choose one</option><option>Yes, I have levy and want this claimable</option><option>I have levy, but I am not sure it applies</option><option>No, I will fund it directly</option><option>I am not sure yet</option></select></div>
+      </div>
+      <div class="enq-row">
+        <div><label for="enqMore">Do you want another department covered on the call?</label><select id="enqMore" name="more"><option>No, one is enough to start</option><option>Yes, more than one</option></select></div>
+        <div id="enqMoreBox" hidden><label for="enqMoreWhich">Which departments?</label><input id="enqMoreWhich" name="morewhich" placeholder="For example: finance and customer service"></div>
+      </div>
+      <label for="enqBudget">What have you set aside to get that outcome? <small>A range is enough. It tells us what to scope, not what to charge.</small></label>
       <select id="enqBudget" name="budget" required>
         <option value="">Choose one</option>
         <option>Starter: under RM20,000</option>
         <option>Foundation: RM20,000 to RM50,000</option>
         <option>Transformation: RM50,000 to RM100,000</option>
         <option>Enterprise: RM100,000 to RM200,000</option>
-        <option>Not sure yet, help me scope it</option>
+        <option>I am not sure yet, help me scope it</option>
       </select>
       <label class="consent" for="enqConsent"><input type="checkbox" id="enqConsent" name="consent"><span>I agree that Aqueenix Sdn Bhd may hold these details to arrange my call and contact me about it, as set out in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
-      <button class="btn btn-wine enq-go" type="submit">Book my call <span class="arr" aria-hidden="true">&rarr;</span></button>
-      <p class="enq-note">No obligation. You keep the written action plan either way. Your details go straight to contact@aqueenix.com.</p>
+      <button class="btn btn-wine enq-go" type="submit">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></button>
+      <p class="enq-note">Thirty minutes. We send you a report with three actions you can start on yourself. Your details go straight to contact@aqueenix.com.</p>
       <p class="enq-msg" id="enqMsg" aria-live="polite"></p>
     </form>
   </div>
@@ -2851,14 +2865,17 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   window.AQ_HOOKS={
     call:'https://my.chatbees.io/api/webhooks/flow/10168/9ce86bee2dd20760b162781a23bdd7f27652e75126f1334f179ee10fe88fac6f',
     news:'https://my.chatbees.io/api/webhooks/flow/10169/de6f93e13a03ec21e10fc80740151662799ac0e8af0aceffb6060d0b009b4b05',
-    assess:'https://my.chatbees.io/api/webhooks/flow/10170/2e357bbef957fde461b8db0f6326471cac002869918fbde40df1f044d28c5018'
+    assess:'https://my.chatbees.io/api/webhooks/flow/10170/2e357bbef957fde461b8db0f6326471cac002869918fbde40df1f044d28c5018',
+    start:'https://my.chatbees.io/api/webhooks/flow/10187/bd87b889f1f602b4e8c8f81a129679b80b962887060c5625d27c071e653b349f'
   };
+  /* Malaysian mobiles to international format, so WhatsApp can use them later */
+  window.AQ_E164=function(v){var s=String(v||'').replace(/[\s().-]/g,'');if(/^0\d{8,10}$/.test(s))return '+6'+s;if(/^60\d{8,10}$/.test(s))return '+'+s;return s};
   window.AQ_HOOK=function(which,name,email,phone,data){
     var u=window.AQ_HOOKS[which];
     if(!u||!window.fetch)return Promise.resolve(false);
     var d={};for(var k in data)if(Object.prototype.hasOwnProperty.call(data,k))d[k]=data[k]==null?'':String(data[k]);
     return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contactName:name||'',contactEmail:email||'',contactPhone:phone||'',data:d})})
+      body:JSON.stringify({contactName:name||'',contactEmail:email||'',contactPhone:window.AQ_E164(phone),data:d})})
       .then(function(r){return r.ok}).catch(function(){return false});
   };
   /* send to both: Chatbees keeps the record, the email gives an instant alert */
@@ -3138,7 +3155,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   var PROFILE={
     role:{id:'p3',text:'What is your role?',options:['Owner or director','Senior manager','Manager or team lead','Staff or other']},
     goal:{id:'p4',text:'What matters most in the next six months?',options:['Grow sales','Save time and cost','Run the business without the owner in every room','Get ready for audit, investors or compliance']},
-    when:{id:'p5',text:'When do you want to act on this?',options:['This month','This quarter','This year','Just exploring']}
+    when:{id:'p5',text:'How urgent is AI transformation to your business?',options:['I need to start this month','I want to start within 3 months','I am planning for the next 6 months','I am just exploring for now']}
   };
   var MAP={id:'map',text:'Is AI connected to these parts of your business?',hint:'One tap per row. This also tells us how you use AI today.',
     levels:['No AI used here','People use AI on their own (copy and paste)','A company AI tool does 1 or 2 tasks here','Connected to our system, with clear steps and a human check'],
@@ -3230,7 +3247,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   ];
   function fact(n){STEPS.push({k:'fact',f:FACTS[n]})}
   function buildSteps(mode){
-    MODE=mode;STEPS=[{k:'mode'}];
+    MODE=mode;STEPS=[{k:'gate'},{k:'mode'}];
     var idx=[];for(var qi=0;qi<NQ;qi++){if(mode==='full'||QS[qi].short)idx.push(qi)}
     idx.forEach(function(qi,n){
       STEPS.push({k:'base',i:qi});
@@ -3253,7 +3270,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   }
   buildSteps('full');
   function qLabel(){var q=QN[step];return q?(q[0]===q[1]?'Question '+q[0]+' of '+NASK:'Questions '+q[0]+' to '+q[1]+' of '+NASK):''}
-  function donePct(){var k=STEPS[step].k;if(k==='mode')return 0;if(k==='tools'||k==='lead'||k==='res')return 100;return Math.round(DONE[step]/NASK*100)}
+  function donePct(){var k=STEPS[step].k;if(k==='mode'||k==='gate')return 0;if(k==='tools'||k==='lead'||k==='res')return 100;return Math.round(DONE[step]/NASK*100)}
   var pctEl=document.getElementById('fcPct');
   var S,step=0;
   function fresh(){
@@ -3305,19 +3322,31 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     next.innerHTML='Next <span class="arr" aria-hidden="true">&rarr;</span>';next.hidden=false;
     var pct=Math.min(100,step/(NS-1)*100);
     fc.classList.toggle('fc-report',s.k==='res');
-    if(s.k==='mode'){
+    if(s.k==='gate'){
+      title.textContent='The Business Blocks Assessment';count.textContent='Before you start';
+      back.disabled=true;
+      var G=S.lead||{};
+      body.innerHTML='<div class="lead-step"><p class="fc-legend" tabindex="-1"><span class="fc-area">Before you start</span>Where should we send your result?</p>'+
+        '<p class="gate-lede">Three details, then the questions. Your score and your first moves go to this email and WhatsApp number.</p>'+
+        '<div class="lead-grid"><div><label for="gtName">What should we call you?</label><input id="gtName" autocomplete="name" value="'+esc(G.name||'')+'"></div>'+
+        '<div><label for="gtPhone">WhatsApp number</label><input id="gtPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 012 345 6789" value="'+esc(G.phone||'')+'"></div>'+
+        '<div class="gate-wide"><label for="gtEmail">Work email</label><input id="gtEmail" type="email" autocomplete="email" placeholder="name@yourcompany.com.my" value="'+esc(G.email||'')+'" aria-describedby="gtEmailMsg"><p class="ld-emsg" id="gtEmailMsg" aria-live="polite"></p></div></div>'+
+        '<label class="lead-mk" for="gtOk"><input type="checkbox" id="gtOk"'+(S.gated?' checked':'')+'><span>I agree that Aqueenix Sdn. Bhd. may save these details and my answers, and contact me about my result, as explained in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. <span lang="ms">Saya bersetuju Aqueenix Sdn. Bhd. boleh menyimpan maklumat dan jawapan saya, dan menghubungi saya berkenaan keputusan saya.</span></span></label>'+
+        '</div>';
+      next.innerHTML='Save and start <span class="arr" aria-hidden="true">&rarr;</span>';
+    }else if(s.k==='mode'){
       title.textContent='The Business Blocks Assessment';count.textContent='Choose how deep to go';
       back.disabled=true;
       body.innerHTML='<div class="fc-mode"><p class="fc-legend" tabindex="-1"><span class="fc-area">Before we start</span>How much detail do you want?</p>'+
         '<div class="md-grid">'+
-        '<button type="button" class="md-card'+(MODE==='short'?' on':'')+'" data-mode="short"><span class="md-t">Short read</span><span class="md-m">About 4 minutes</span><span class="md-d">Your maturity level, your top three gaps, and the one move to make first.</span></button>'+
+        '<button type="button" class="md-card'+(MODE==='short'?' on':'')+'" data-mode="short"><span class="md-t">Short read</span><span class="md-m">About 3 minutes</span><span class="md-d">Your maturity level, your top three gaps, and the one move to make first.</span></button>'+
         '<button type="button" class="md-card'+(MODE==='full'?' on':'')+'" data-mode="full"><span class="md-t">Full assessment</span><span class="md-m">About 12 minutes</span><span class="md-d">Everything in the short read, plus your score across eight areas, where AI already sits in your work, your tools, and a 90-day path.</span></button>'+
         '</div>'+
         '<p class="md-note">The more you tell us, the more specific the plan. Either way this is a template plan, built on our own framework and written by our founder. The version made for your business comes out of the strategy call, once we have seen how you actually run.</p></div>';
       [].forEach.call(body.querySelectorAll('.md-card'),function(btn){
         btn.addEventListener('click',function(){
           var m=btn.getAttribute('data-mode');
-          buildSteps(m);step=1;render();
+          buildSteps(m);step=2;render();
         });
       });
       next.innerHTML='Start <span class="arr" aria-hidden="true">&rarr;</span>';
@@ -3352,19 +3381,16 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     }else if(s.k==='lead'){
       title.textContent='Your report is ready';count.textContent='Last step';
       var L=S.lead||{},role=S.p.role!=null?PROFILE.role.options[S.p.role]:'';
-      body.innerHTML='<div class="lead-step"><p class="fc-legend" tabindex="-1"><span class="fc-area">Where should we send it?</span>Get your full Business Blocks report</p>'+
+      body.innerHTML='<div class="lead-step"><p class="fc-legend" tabindex="-1"><span class="fc-area">Last step</span>A few more details, so the report fits your business</p>'+
         (MODE==='short'?'<ul class="lead-gets"><li>Your maturity level</li><li>Your top three gaps and what they cost</li><li>The one move to make first</li></ul>':'<ul class="lead-gets"><li>Your score and maturity level across eight areas</li><li>Your top three gaps and what they cost</li><li>Tiny things you can do this week</li><li>Your 90-day path, foundation first, then AI</li></ul>')+
-        '<div class="lead-grid"><div><label for="ldName">Your name</label><input id="ldName" autocomplete="name" value="'+esc(L.name||'')+'"></div>'+
+        '<input type="hidden" id="ldName" value="'+esc(L.name||'')+'"><input type="hidden" id="ldEmail" value="'+esc(L.email||'')+'"><input type="hidden" id="ldPhone" value="'+esc(L.phone||'')+'"><p class="ld-emsg" id="ldEmailMsg" aria-live="polite" hidden></p>'+
+        '<div class="lead-grid">'+
         '<div><label for="ldCo">Company name</label><input id="ldCo" autocomplete="organization" value="'+esc(L.company||'')+'"></div>'+
-        '<div><label for="ldEmail">Company email</label><input id="ldEmail" type="email" autocomplete="email" placeholder="name@yourcompany.com.my" value="'+esc(L.email||'')+'" aria-describedby="ldEmailMsg"><p class="ld-emsg" id="ldEmailMsg" aria-live="polite"></p></div>'+
-        '<div><label for="ldPhone">WhatsApp number <small>(optional)</small></label><input id="ldPhone" type="tel" autocomplete="tel" value="'+esc(L.phone||'')+'"></div>'+
         '<div><label for="ldRole">Your role</label><select id="ldRole"><option value="">Choose one</option>'+PROFILE.role.options.map(function(o,k){return '<option value="'+k+'"'+(S.p.role===k?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select></div>'+
-        '<div><label for="ldWhen">When do you plan to act? <small>(optional)</small></label><select id="ldWhen"><option value="">Choose one</option>'+PROFILE.when.options.map(function(o,k){return '<option value="'+k+'"'+(S.p.when===k?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select></div></div>'+'<div class="lead-bn"><label for="ldBn">What is slowing the business down most right now? <small>(optional, but it changes what we send you)</small></label><textarea id="ldBn" rows="3" placeholder="In your own words. One or two sentences is plenty.">'+esc(L.bottleneck||'')+'</textarea></div>'+
+        '<div><label for="ldWhen">How urgent is AI transformation to your business? <small>(optional)</small></label><select id="ldWhen"><option value="">Choose one</option>'+PROFILE.when.options.map(function(o,k){return '<option value="'+k+'"'+(S.p.when===k?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select></div></div>'+'<div class="lead-bn"><label for="ldBn">What is slowing the business down most right now? <small>(optional, but it changes what we send you)</small></label><textarea id="ldBn" rows="3" placeholder="In your own words. One or two sentences is plenty.">'+esc(L.bottleneck||'')+'</textarea></div>'+
         '<label class="lead-mk" for="ldMk"><input type="checkbox" id="ldMk"'+(L.marketing?' checked':'')+'><span>Yes, also send me practical AI and operations tips and event invitations from Aqueenix. I can unsubscribe at any time.</span></label>'+
         '<p class="lead-consent">By tapping “Send my report”, I agree that Aqueenix Sdn. Bhd. may use the information I have given to prepare my Business Blocks report and to contact me about it, as explained in the <a href="privacy/" target="_blank" rel="noopener" target="_blank" rel="noopener">Privacy Notice</a>. <span lang="ms">Dengan menekan “Send my report”, saya bersetuju Aqueenix Sdn. Bhd. boleh menggunakan maklumat ini untuk menyediakan laporan saya dan menghubungi saya berkenaan laporan tersebut.</span></p>'+
         '</div>';
-      var em=document.getElementById('ldEmail');
-      em.addEventListener('blur',function(){var r=AQ_LEADS.checkEmail(em.value),m=document.getElementById('ldEmailMsg');if(em.value.trim()&&!r.ok){m.textContent=r.msg;em.setAttribute('aria-invalid','true')}else{m.textContent='';em.removeAttribute('aria-invalid')}});
       next.innerHTML='Send my report <span class="arr" aria-hidden="true">&rarr;</span>';
     }else{
       title.textContent='Your Business Blocks report';count.textContent=S.lead?'Prepared for '+S.lead.company:'Complete';
@@ -3443,6 +3469,21 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   }
   function validate(){
     var s=STEPS[step];
+    if(s.k==='gate'){
+      var gv=function(id){return (document.getElementById(id).value||'').trim()};
+      body.querySelectorAll('[aria-invalid]').forEach(function(x){x.removeAttribute('aria-invalid')});
+      function gbad(id,m){var el=document.getElementById(id);el.setAttribute('aria-invalid','true');el.focus();err.textContent=m;return false}
+      var gn=gv('gtName'),gp=gv('gtPhone'),ge=gv('gtEmail');
+      if(gn.length<2)return gbad('gtName','Please tell us what to call you.');
+      if(gp.replace(/\D/g,'').length<8||!/^[+\d][\d\s-]{6,}$/.test(gp))return gbad('gtPhone','Please enter a WhatsApp number we can reach you on.');
+      var gr=AQ_LEADS.checkEmail(ge);if(!gr.ok){document.getElementById('gtEmailMsg').textContent=gr.msg;return gbad('gtEmail',gr.msg)}
+      if(!document.getElementById('gtOk').checked){document.getElementById('gtOk').focus();err.textContent='Please tick the box so we may save your details and answers.';return false}
+      var L0=S.lead||{};
+      S.lead={name:gn,company:L0.company||'',email:gr.email,phone:gp,bottleneck:L0.bottleneck||'',marketing:!!L0.marketing};S.gated=true;
+      if(window.AQ_HOOK&&S.startSent!==gr.email){S.startSent=gr.email;
+        window.AQ_HOOK('start',gn,gr.email,gp,{name:gn,email:gr.email,whatsapp:gp,source:'Business Blocks Assessment',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice)'})}
+      return true;
+    }
     if(s.k==='mode'){buildSteps(MODE);return true}
     if(s.k==='base'||s.k==='prof'||s.k==='extra'){if(!answered(s)){err.textContent='Choose one answer to continue.';var i=body.querySelector('input');if(i)i.focus();return false}return true}
     if(s.k==='map'){
@@ -3604,7 +3645,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     var r=S.last;
     document.getElementById('resBook').addEventListener('click',function(e){
       e.preventDefault();fc.close();
-      var sel=document.getElementById('enqTopic');if(sel)sel.value='Book a 30-minute strategy call';
+      var sel=document.getElementById('enqTopic');if(sel)sel.selectedIndex=0;
       var f=function(id,v){var el=document.getElementById(id);if(el&&!el.value)el.value=v};
       if(S.lead){f('enqName',S.lead.name);f('enqCo',S.lead.company);f('enqEmail',S.lead.email);f('enqPhone',S.lead.phone)}
       if(r)f('enqText','I took the Business Blocks Assessment: '+r.overall+'/100, Level '+r.level+' ('+lv(r.level).name+'). My top gap is '+(r.gaps[0]?r.gaps[0].d.name:'not clear yet')+'. I would like to book a 30-minute strategy call.');
@@ -3623,7 +3664,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
 
   if(fc&&openBtn){
     openBtn.addEventListener('click',function(){
-      if(STEPS[step].k==='res'){S=fresh();step=0}
+      if(STEPS[step].k==='res'){var kp=S.lead,ks=S.startSent;S=fresh();if(kp){S.lead={name:kp.name,company:kp.company,email:kp.email,phone:kp.phone,bottleneck:'',marketing:kp.marketing};S.gated=true;S.startSent=ks;buildSteps(MODE);step=1}else step=0}
       render();
       if(typeof fc.showModal==='function'){fc.showModal()}else{fc.setAttribute('open','')}
       if(window.AQ&&window.AQ.lenis)window.AQ.lenis.stop();
@@ -3659,7 +3700,8 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       step++;render();
     });
     back.addEventListener('click',function(){
-      if(STEPS[step].k==='res'){S=fresh();step=0;render();return}
+      if(STEPS[step].k==='res'){var kp2=S.lead,ks2=S.startSent;S=fresh();if(kp2){S.lead={name:kp2.name,company:kp2.company,email:kp2.email,phone:kp2.phone,bottleneck:'',marketing:kp2.marketing};S.gated=true;S.startSent=ks2;buildSteps(MODE);step=1}else step=0;render();return}
+      if(STEPS[step].k==='mode'&&S.gated){return}
       if(step>0){step--;render()}
     });
   }
@@ -4435,23 +4477,27 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       msg.className='enq-msg';
       [].forEach.call(ef.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid')});
       function bad(n,t){var el=ef.elements[n];el.setAttribute('aria-invalid','true');el.focus();msg.textContent=t}
-      if(!f('name'))return bad('name','Please tell us your name.');
+      if(!f('name'))return bad('name','Please tell us what to call you.');
       if(!f('company'))return bad('company','Please tell us your company.');
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f('email')))return bad('email','Enter your work email, for example name@company.com.my.');
       if(!f('phone'))return bad('phone','Enter a mobile number we can reach you on.');
+      if(!f('role'))return bad('role','Tell us your role in the business.');
       if(!f('size'))return bad('size','Tell us how many people are in the business.');
-      if(!f('message'))return bad('message','Tell us the task you would hand over first.');
-      if(!f('decider'))return bad('decider','Tell us who decides on investing in this.');
-      if(!f('ready'))return bad('ready','Tell us when you would want this running.');
+      if(!f('good'))return bad('good','Tell us what good looks like in your business.');
+      if(!f('message'))return bad('message','Tell us what is holding that back.');
+      if(!f('decider'))return bad('decider','Tell us who decides on this.');
+      if(!f('ready'))return bad('ready','Tell us how urgent this is for your business.');
+      if(!f('trained'))return bad('trained','Tell us whether your team has attended AI training.');
+      if(!f('hrdc'))return bad('hrdc','Tell us whether HRD Corp levy is part of your plan.');
       if(!f('budget'))return bad('budget','Pick a range, or tell us you are not sure yet.');
       if(!ef.elements.consent.checked){ef.elements.consent.focus();msg.textContent='Tick the box so we may use your details to arrange your call.';return}
-      var priority=(['10 to 30','31 to 60'].indexOf(f('size'))>-1)&&(/^I decide/.test(f('decider')))&&(f('ready')==='Now'||f('ready')==='Within three months');
+      var priority=(['10 to 30','31 to 60'].indexOf(f('size'))>-1)&&(/^I decide/.test(f('decider')))&&(f('ready')==='I need to start this month'||f('ready')==='I want to start within 3 months');
       var sub='Strategy call'+(priority?' (priority)':'')+': '+f('company');
-      var body=['Name: '+f('name'),'Company: '+f('company'),'Topic: '+(f('topic')||'-'),'Role: '+(f('role')||'-'),'Email: '+f('email'),'Mobile: '+f('phone'),'Team size: '+f('size'),'Based in: '+(f('state')||'-'),'Heard about us: '+(f('source')||'-'),'','Task to hand over first:',f('message'),'','Who decides: '+f('decider'),'When: '+f('ready'),'Budget in mind: '+f('budget'),'','What good looks like to them:',(f('good')||'-'),'Priority routing: '+(priority?'yes':'no'),'','Sent from the Aqueenix website.'].join('\n');
+      var body=['Name: '+f('name'),'Company: '+f('company'),'Topic: '+(f('topic')||'-'),'Role: '+(f('role')||'-'),'Email: '+f('email'),'Mobile: '+f('phone'),'Team size: '+f('size'),'Based in: '+(f('state')||'-'),'Heard about us: '+(f('source')||'-'),'Something else: '+(f('other')||'-'),'','What good looks like:',f('good'),'','What is holding it back:',f('message'),'','Who decides: '+f('decider'),'How urgent: '+f('ready'),'AI training before: '+f('trained'),'HRD Corp levy: '+f('hrdc'),'Another department: '+f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside: '+f('budget'),'Priority routing: '+(priority?'yes':'no'),'','Sent from the Aqueenix website.'].join('\n');
       var href='mailto:contact@aqueenix.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
       var btn=ef.querySelector('button[type="submit"]');if(btn)btn.disabled=true;msg.textContent='Sending...';
       var topic=f('topic');var isCall=true;
-      window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),task:f('message'),good:f('good'),decider:f('decider'),ready:f('ready'),budget:f('budget'),topic:f('topic'),priority:priority?'yes':'no',consent:'Agreed (Privacy Notice)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','Task to hand over first':f('message'),'Who decides':f('decider'),'When':f('ready'),'Budget in mind':f('budget'),'What good looks like':f('good')||'-','Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice)',_replyto:f('email')}).then(function(ok){
+      window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('other'),page:location.pathname,priority:priority?'yes':'no',consent:'Agreed (Privacy Notice)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice)',_replyto:f('email')}).then(function(ok){
         if(btn)btn.disabled=false;
         if(ok){msg.className='enq-msg ok';msg.textContent='Thank you, '+f('name')+'. Your enquiry has reached us at contact@aqueenix.com, and we will be in touch.';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0)}
         else{msg.className='enq-msg ok';msg.textContent='Your email app is opening with your enquiry ready to send to contact@aqueenix.com. If nothing opens, email us directly at contact@aqueenix.com.';window.location.href=href}
@@ -4588,19 +4634,20 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
 </script>
 <script>
 (function(){
-  var sel=document.getElementById('enqTopic'),box=document.getElementById('enqCall'),lab=document.getElementById('enqTextL'),ta=document.getElementById('enqText');
-  if(!sel||!box)return;
-  var P0=ta.getAttribute('placeholder');
+  var sel=document.getElementById('enqTopic'),ob=document.getElementById('enqOtherBox'),more=document.getElementById('enqMore'),mb=document.getElementById('enqMoreBox');
+  if(!sel)return;
   function sync(){
-    var call=/strategy call/i.test(sel.value);
-    box.hidden=!call;
-    lab.textContent=call?'What do you hope to achieve from this call?':'How can we help?';
-    ta.setAttribute('placeholder',call?'For example: a clear first step for our month-end, and a view of what AI could take over.':P0);
+    if(ob)ob.hidden=!/something else/i.test(sel.value);
+    if(mb&&more)mb.hidden=!/^yes/i.test(more.value);
   }
   window.AQ_TOPIC_SYNC=sync;
-  sel.addEventListener('change',sync);
-  document.addEventListener('click',function(){setTimeout(sync,0)});
-  sync();setTimeout(sync,300);
+  sel.addEventListener('change',sync);if(more)more.addEventListener('change',sync);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[data-topic]'):null;
+    if(a){sel.selectedIndex=/implementor/i.test(a.getAttribute('data-topic'))?1:0}
+    setTimeout(sync,0);
+  });
+  sync();
 })();
 </script>
 
