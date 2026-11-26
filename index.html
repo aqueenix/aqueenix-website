@@ -2617,7 +2617,7 @@ a.wf-tile:focus-visible{outline:2px solid #D9AE50;outline-offset:3px}
     </div>
     <div class="reveal">
       <div class="eyebrow">Who builds it</div>
-      <h2 id="op-h">Built by an operator. <em>Proven inside a group of companies.</em></h2>
+      <h2 id="op-h">Built by an operator. <em>Proven where the work actually happens.</em></h2>
       <p class="op-name">April Chen, Founder and CEO</p>
       <p class="op-line">10+ years in operations, ex-Group COO of IT companies, and a double master&rsquo;s in Business Entrepreneurship and e-Commerce.</p>
       <p class="body op-true">Technology gets technical. We keep it simple and direct: plain language, quick wins, and systems that stay stable once they go live. We are operators, and we know a business needs speed, sustainability and results that are real.</p>
@@ -3441,7 +3441,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       next.innerHTML='Send my report <span class="arr" aria-hidden="true">&rarr;</span>';
     }else{
       title.textContent='Your Business Blocks report';count.textContent=S.lead?'Prepared for '+S.lead.company:'Complete';
-      body.innerHTML=reportHTML(evaluate());
+      var rr=evaluate();body.innerHTML=window.AQ_REPORT_BY_EMAIL?teaserHTML(rr):reportHTML(rr);
       back.disabled=false;back.textContent='Retake the assessment';next.textContent='Close';
       wireReport();
       pct=100;
@@ -3642,6 +3642,19 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   }
 
   /* ---------- The report ---------- */
+  /* When the report goes out by email: the screen shows the level and the main gap only */
+  window.AQ_REPORT_BY_EMAIL=/[?&]report=email(&|$)/.test(location.search);
+  function teaserHTML(r){
+    var L=lv(r.level),co=S.lead&&S.lead.company?S.lead.company:'Your business',em=S.lead?S.lead.email:'your email',gap1=r.gaps[0];
+    var verdict=gap1?('What holds you back most is '+gap1.d.name+(gap1.items[0]?': '+gap1.items[0].replace(/ \((missing|shaky)\)$/,' is $1')+'.':'.')):'Every area is in good shape.';
+    return '<div class="rp rp-teaser">'+
+      '<div class="rp-head" tabindex="-1"><div class="rp-score"><span id="resNum">'+r.overall+'</span><small>/100</small></div><div><p class="rp-k">'+esc(co)+' &middot; '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+'</p><p class="rp-level">Level '+r.level+', '+esc(L.name)+'</p><p>'+esc(L.d)+'</p></div></div>'+
+      '<div class="rp-sec rp-mean"><h4>Your main gap</h4><p>'+esc(verdict)+'</p></div>'+
+      '<div class="rp-sec rp-inbox"><h4>Your full report is on its way</h4><p>We are sending it to <b>'+esc(em)+'</b>. It covers:</p><ul class="lead-gets">'+(MODE==='short'?'<li>Your top three gaps and what they cost</li><li>The one move to make first</li>':'<li>Your score across eight areas</li><li>Your top three gaps and what they cost</li><li>Small things you can do this week</li><li>Your 90-day path, foundation first, then AI</li>')+'</ul><p class="rp-note">Not in your inbox within a few minutes? Check spam, or message us on WhatsApp.</p></div>'+
+      '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a></div>'+
+      '<p class="rp-saved" id="rpSaved" aria-live="polite"></p>'+
+      '</div>';
+  }
   function reportHTML(r){
     var L=lv(r.level),nextL=r.level<5?lv(r.level+1):null,co=S.lead?S.lead.company:'Your business';
     var indLabel=QS[0].options[S.a[0]].label.split(':')[0],szLabel=QS[1].options[S.a[1]].label;
