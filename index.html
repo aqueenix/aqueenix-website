@@ -3683,7 +3683,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       '<div class="rp-sec"><h4>Your 90-day path</h4><ol class="rp-path">'+path+'</ol></div>'+
       '<div class="rp-sec rp-bench"><h4>How others are doing</h4><ul><li><b>38%</b> of Malaysian businesses use AI consistently, but <b>67%</b> of them are still on basic tools. <small>AWS, 2026</small></li><li><b>16%</b> of Malaysian organisations are fully ready for AI, and <b>38%</b> have a change plan. <small>Cisco AI Readiness Index, 2025</small></li><li><b>88%</b> of organisations worldwide use AI somewhere, but only about <b>6%</b> see real profit from it. <small>McKinsey, 2025</small></li></ul><p class="rp-note">Once enough businesses like yours have taken the assessment, this will compare you with your own industry and size.</p></div>'+
       '<div class="rp-sec rp-ways"><h4>Three ways forward</h4><div><b>Do it yourself</b><p>Use this report and the quick wins with your own team.</p></div><div><b>Train your key person</b><p>We train the person accountable for each gap. HRD Corp Claimable where eligible.</p></div><div><b>Done with you</b><p>We design, build and run it with you, as one accountable partner.</p></div></div>'+
-      '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a><button type="button" class="btn btn-ghost-wine" id="resDl">Save my report as PDF</button></div>'+
+      '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a></div>'+
       '<p class="rp-saved" id="rpSaved" aria-live="polite"></p>'+
       '<p class="rp-method">Self-reported and indicative, based on your '+answersList().length+' answers. Not an audit. Each area is scored 0 to 100 from your answers, weighted toward people and process, and your level can be at most one above your weakest area. See our <a href="privacy/" target="_blank" rel="noopener" target="_blank" rel="noopener">Privacy Notice</a>.</p>'+
       '</div>';
@@ -3698,7 +3698,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       if(r)f('enqText','I took the Business Blocks Assessment: '+r.overall+'/100, Level '+r.level+' ('+lv(r.level).name+'). My top gap is '+(r.gaps[0]?r.gaps[0].d.name:'not clear yet')+'. I would like to book a 30-minute strategy call.');
       setTimeout(function(){window.AQ.scrollTo('#contact')},60);
     });
-    document.getElementById('resDl').addEventListener('click',function(){
+    var _dl=document.getElementById('resDl');if(_dl)_dl.addEventListener('click',function(){
       var co=esc(S.lead&&S.lead.company?S.lead.company:'your business'),who=esc(S.lead?S.lead.name:''),day=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
       var PRINT_CSS='@page{size:A4;margin:14mm 14mm 16mm}.pdf-h{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:2px solid #C8941E;padding:0 0 12px;margin:0 0 18px}.pdf-h b{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;color:#8B1E2D;letter-spacing:.04em}.pdf-h span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9A7016;font-weight:700}.pdf-h p{margin:0;text-align:right;font-size:12.5px;color:#6b625b;line-height:1.5}.pdf-f{margin-top:26px;padding-top:12px;border-top:1px solid rgba(110,18,15,.2);font-size:11.5px;color:#6b625b;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.pdf-bar{position:sticky;top:0;z-index:5;margin:-24px -24px 18px;padding:12px 24px;background:#4A0C0A;color:#F5EFE6;font-size:14px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.pdf-bar button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:9px 18px;background:#F0CF7A;color:#4A0C0A;cursor:pointer}@media print{body{background:#fff;padding:0;max-width:none}.pdf-bar{display:none}.rp-card,.rp-gap,.rp-dim{break-inside:avoid}}';
       var html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aqueenix Business Blocks report, '+co+'</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap"><style>'+REPORT_CSS+PRINT_CSS+'</style></head><body>'+
@@ -3749,7 +3749,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
         AQ_LEADS.save(lead).then(function(res){
           next.disabled=false;step++;render();
           var sv=document.getElementById('rpSaved');
-          if(sv)sv.textContent='Thank you. We have your report, and our team will be in touch. Save it as a PDF now to keep your own copy.';
+          if(sv)sv.textContent='Thank you. We have your report, and our team will be in touch. ';
         });
         return;
       }
