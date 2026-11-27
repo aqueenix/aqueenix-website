@@ -2458,6 +2458,51 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
 .gt-conf p{margin:0 0 14px;font-size:16px;line-height:1.5;color:#3A0E0C}
 .gt-conf b{display:block;font-family:var(--serif);font-size:clamp(22px,5.4vw,28px);line-height:1.2;color:#8B1E2D;margin:4px 0;overflow-wrap:anywhere}
 .gt-conf-b{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+
+/* banner: title large, sentence small */
+.hero-x h1{margin-top:0}
+.hx-sub{margin:34px auto 0;max-width:820px;font-size:clamp(18px,1.9vw,26px);line-height:1.45;color:#5B4742}
+.hx-cue span{max-width:none}
+/* vision, mission and values: a quiet band with a watercolour wash */
+.vmv{position:relative;overflow:hidden;padding-block:84px 92px;background:linear-gradient(180deg,#F7EEE6,#F8ECE9)}
+.vmv-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.vmv-wash{position:absolute;inset:0;pointer-events:none}
+.vmv-wash i{position:absolute;border-radius:50%;filter:blur(46px);opacity:.75}
+.vmv-wash i:nth-child(1){width:46vw;height:30vw;left:-10vw;top:-6vw;background:radial-gradient(closest-side,rgba(226,170,160,.5),rgba(226,170,160,0))}
+.vmv-wash i:nth-child(2){width:40vw;height:28vw;right:-8vw;top:18%;background:radial-gradient(closest-side,rgba(228,194,119,.42),rgba(228,194,119,0))}
+.vmv-wash i:nth-child(3){width:38vw;height:24vw;left:26%;bottom:-10vw;background:radial-gradient(closest-side,rgba(168,176,128,.3),rgba(168,176,128,0))}
+.vmv .wrap{position:relative;z-index:1}
+.vmv-grid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:56px;align-items:center;max-width:1080px;margin-inline:auto}
+.vmv-art{margin:0}
+.vmv-art img{display:block;width:100%;max-width:300px;margin-inline:auto;height:auto;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent 100%);mask-image:radial-gradient(closest-side,#000 72%,transparent 100%)}
+.vmv-copy{display:grid;gap:30px}
+.vmv-k{margin:0 0 10px;display:flex;align-items:center;gap:12px;font-size:11.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#9A7016}
+.vmv-k::before{content:"";width:34px;height:1px;background:#C8941E}
+.vmv-t{margin:0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(23px,2.4vw,33px);line-height:1.22;color:#3A0E0C}
+.vmv-item:nth-child(2) .vmv-t{color:#8B1E2D}
+.vmv-values{max-width:1080px;margin:58px auto 0;padding-top:34px;border-top:1px solid rgba(200,148,30,.4)}
+.vmv-score{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.vmv-score li{display:flex;flex-direction:column;gap:12px}
+.vmv-score b{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid #C8941E;font-family:var(--serif);font-size:22px;font-weight:600;color:#8B1E2D;background:rgba(253,246,244,.7)}
+.vmv-score strong{display:block;font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.15;color:#3A0E0C}
+.vmv-score span{display:block;margin-top:5px;font-size:13.5px;line-height:1.5;color:#6B5A55}
+.how-mid.how-one{grid-template-columns:1fr;max-width:760px;margin-inline:auto}
+@media (max-width:900px){
+.vmv-score{grid-template-columns:1fr 1fr;gap:22px 18px}
+}
+@media (max-width:760px){
+.hx-sub{margin-top:26px;font-size:17px}
+.hx-cue span{text-align:center;line-height:1.7}
+.vmv{padding-block:56px 60px}
+.vmv-grid{grid-template-columns:1fr;gap:26px}
+.vmv-art img{max-width:190px}
+.vmv-copy{gap:24px}
+.vmv-values{margin-top:40px;padding-top:26px}
+.vmv-score{grid-template-columns:1fr;gap:16px}
+.vmv-score li{flex-direction:row;align-items:flex-start;gap:14px}
+.vmv-score b{flex:0 0 40px;width:40px;height:40px;font-size:20px}
+.vmv-score strong{font-size:19px}
+}
 </style>
 </head>
 <body>
@@ -2468,16 +2513,33 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
 <header class="hero hero-b hero-x t-blush" data-section="hero" data-ch="1" data-chn="Who we are">
   <div class="hb-bg" aria-hidden="true"><i class="hb-orb o1"></i><i class="hb-orb o2"></i><i class="hb-orb o3"></i><svg class="hb-arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path d="M-80 720 C 300 520, 640 860, 1520 380"/><path d="M-80 780 C 360 600, 700 920, 1520 470"/><path d="M-80 840 C 420 680, 760 980, 1520 560"/></svg></div>
   <div class="wrap hx-wrap">
-    <div class="eyebrow h-in">Business Process Engineering to AI Transformation</div>
     <h1>
-      <span class="line"><span>We analyse and re-engineer</span></span>
-      <span class="line"><span>business processes</span></span>
-      <span class="line"><span><em>to enable AI transformation.</em></span></span>
+      <span class="line"><span>Business Process Engineering</span></span>
+      <span class="line"><span><em>to AI Transformation</em></span></span>
     </h1>
-    <a class="hx-cue h-in" href="#room" aria-label="Scroll to the next section"><span>Scroll</span><i aria-hidden="true"></i></a>
+    <p class="hx-sub h-in">We analyse and re-engineer business processes to enable AI transformation.</p>
+    <a class="hx-cue h-in" href="#direction" aria-label="Scroll to the next section"><span>Scroll to begin the transformation</span><i aria-hidden="true"></i></a>
   </div>
-  <a class="scroll-cue" href="#room" aria-label="Scroll to the next section">Scroll</a>
+  <a class="scroll-cue" href="#direction" aria-label="Scroll to the next section">Scroll</a>
 </header>
+
+<section class="vmv t-blush" id="direction" data-section="direction" aria-labelledby="vmv-h">
+  <div class="vmv-wash" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <h2 id="vmv-h" class="vmv-sr">Vision, mission and values</h2>
+    <div class="vmv-grid">
+      <figure class="vmv-art reveal"><img src="media/book/connector.webp" alt="Watercolour of a hand setting the last stone into an arch" loading="lazy" decoding="async"></figure>
+      <div class="vmv-copy reveal">
+        <div class="vmv-item"><p class="vmv-k">Vision</p><p class="vmv-t">To lead AI transformation that is ethical to people and true to the essence of each business.</p></div>
+        <div class="vmv-item"><p class="vmv-k">Mission</p><p class="vmv-t">To stay human while raising efficiency, productivity and standards.</p></div>
+      </div>
+    </div>
+    <div class="vmv-values reveal">
+      <p class="vmv-k">Core values</p>
+      <ol class="vmv-score" aria-label="Our core values spell SCORE"><li><b aria-hidden="true">S</b><div><strong>Speed and support</strong><span>AI moves fast, and so does Aqueenix. It works beside each business as a partner, and stays as things change.</span></div></li><li><b aria-hidden="true">C</b><div><strong>Clarity</strong><span>Nothing moves until it is clear: who does what, how the work flows, and what good looks like.</span></div></li><li><b aria-hidden="true">O</b><div><strong>Outcomes</strong><span>The work is measured by results, and by what truly matters to the business.</span></div></li><li><b aria-hidden="true">R</b><div><strong>Respect</strong><span>Direct and honest, always. Firm on the issue, respectful of the person.</span></div></li><li><b aria-hidden="true">E</b><div><strong>Execution</strong><span>Plans become working practice. Not another course, and not another report.</span></div></li></ol>
+    </div>
+  </div>
+</section>
 
 <section class="room t-blush" id="room" data-section="room" aria-label="April Chen in the room, on stage and on air">
   <div class="wrap">
@@ -2627,11 +2689,7 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
       <li><span class="hs-n">4</span><p class="hs-k">HRD Corp Claimable</p><h3>Run</h3><p>We train your team to run it, and stay on to keep every part in tune.</p></li>
     </ol>
     <p class="how-note reveal"><span aria-hidden="true"></span>More tools or more courses won&rsquo;t fix the problem. <em>Better execution will.</em></p>
-    <div class="how-mid">
-      <div class="how-drivers">
-        <p class="how-k">What shapes your quote</p>
-        <ul><li>Number of people</li><li>Departments involved</li><li>Customer channels</li><li>Systems to connect</li><li>Training needs</li></ul>
-      </div>
+    <div class="how-mid how-one">
       <div class="ways ways-cta">
         <p class="ways-h">The strategy call</p>
         <p class="ways-q">Ready to transform <em>your business?</em></p>
