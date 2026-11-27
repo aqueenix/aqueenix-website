@@ -3058,7 +3058,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   })();
   /* send to both: Chatbees keeps the record, the email gives an instant alert */
   window.AQ_BOTH=function(which,name,email,phone,hookData,subject,fields){
-    var cap=function(pr){return Promise.race([pr,new Promise(function(res){setTimeout(function(){res(false)},9000)})])};
+    var cap=function(pr){return Promise.race([pr,new Promise(function(res){setTimeout(function(){res(false)},30000)})])};
     var ps=[cap(window.AQ_HOOK(which,name,email,phone,hookData)),cap(window.AQ_SEND(subject,fields))];
     return new Promise(function(res){var n=0,done=false;ps.forEach(function(pr){pr.then(function(ok){n++;if(done)return;if(ok||n===ps.length){done=true;res(!!ok)}})})});
   };
