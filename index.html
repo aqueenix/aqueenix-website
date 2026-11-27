@@ -3029,7 +3029,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     if(!u||!window.fetch)return Promise.resolve(false);
     var d={};for(var k in data)if(Object.prototype.hasOwnProperty.call(data,k))d[k]=data[k]==null?'':String(data[k]);
     if(window.AQ_TRAIL){var tr=window.AQ_TRAIL();for(var tk in tr)if(d[tk]==null)d[tk]=tr[tk]}
-    return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},
+    return fetch(u,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},
       body:JSON.stringify({contactName:name||'',contactEmail:email||'',contactPhone:window.AQ_E164(phone),data:d})})
       .then(function(r){return r.ok}).catch(function(){return false});
   };
@@ -4738,14 +4738,18 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       var body=['Name: '+f('name'),'Company: '+f('company'),'Topic: '+(f('topic')||'-'),'Role: '+(f('role')||'-'),'Email: '+f('email'),'Mobile: '+f('phone'),'Team size: '+f('size'),'Based in: '+(f('state')||'-'),'Heard about us: '+(f('source')||'-'),'Department: '+(f('dept')||'-'),'','What good looks like:',f('good'),'','What is holding it back:',f('message'),'','Who decides: '+f('decider'),'How urgent: '+f('ready'),'AI training before: '+f('trained'),'HRD Corp levy: '+f('hrdc'),'Another department: '+f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside: '+f('budget'),'Priority routing: '+(priority?'yes':'no'),'','Sent from the Aqueenix website.'].join('\n');
       var href='mailto:contact@aqueenix.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
       var btn=ef.querySelector('button[type="submit"]'),free=AQ.busy(btn,'Sending');msg.textContent='';
+      var first=String(f('name')||'').split(' ')[0],sentTo=f('email'),shown=false,settled=false;
+      function showDone(){if(shown)return;shown=true;msg.className='enq-msg';msg.textContent='';
+        var dn=document.getElementById('enqDone');document.getElementById('enqDoneH').textContent='Thank you'+(first?', '+first:'')+'. We have your request.';document.getElementById('enqDoneTo').textContent=sentTo;
+        ef.classList.add('sent');dn.hidden=false;try{dn.focus({preventScroll:true})}catch(x){}
+        if(AQ.lenis)AQ.lenis.scrollTo(ef,{offset:-110,duration:.7});else ef.scrollIntoView({block:'start'})}
+      /* Chatbees sends the emails before it answers, which takes a few seconds. Once the request is on its way, confirm; if it does fail, bring the form back with the answers still in it. */
+      var early=setTimeout(function(){if(!settled)showDone()},2600);
       var topic=f('topic');var isCall=true;
       window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('dept'),page:location.pathname,priority:priority?'yes':'no',greeting:'Hi '+String(f('name')||'').split(' ')[0]+',',consent:'Agreed (Privacy Notice, updates and marketing)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice, updates and marketing)',_replyto:f('email')}).then(function(ok){
-        free();
-        if(ok){var first=String(f('name')||'').split(' ')[0],sentTo=f('email');msg.className='enq-msg ok';msg.textContent='';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0);
-          var dn=document.getElementById('enqDone');document.getElementById('enqDoneH').textContent='Thank you'+(first?', '+first:'')+'. We have your request.';document.getElementById('enqDoneTo').textContent=sentTo;
-          ef.classList.add('sent');dn.hidden=false;try{dn.focus({preventScroll:true})}catch(x){}
-          if(AQ.lenis)AQ.lenis.scrollTo(ef,{offset:-110,duration:.7});else ef.scrollIntoView({block:'start'})}
-        else{msg.className='enq-msg ok';msg.textContent='Your email app is opening with your enquiry ready to send to contact@aqueenix.com. If nothing opens, email us directly at contact@aqueenix.com.';window.location.href=href}
+        settled=true;clearTimeout(early);free();
+        if(ok){showDone();ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0)}
+        else{if(shown){shown=false;ef.classList.remove('sent');document.getElementById('enqDone').hidden=true}msg.className='enq-msg ok';msg.textContent='Your email app is opening with your enquiry ready to send to contact@aqueenix.com. If nothing opens, email us directly at contact@aqueenix.com.';window.location.href=href}
       });
     });
   }

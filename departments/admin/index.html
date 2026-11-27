@@ -308,7 +308,7 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
     Q.forEach(function(q,x){data['adm_'+q.k]=q.o[ans[x]]});
     var sent=document.getElementById('dqSent');
     if(!window.fetch){return}
-    fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:lead.name,contactEmail:lead.email,contactPhone:e164(lead.phone),data:data})})
+    fetch(HOOK,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:lead.name,contactEmail:lead.email,contactPhone:e164(lead.phone),data:data})})
       .then(function(r){if(sent)sent.textContent=r.ok?'Saved. We have your result, '+lead.name.split(' ')[0]+'.':'We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'})
       .catch(function(){if(sent)sent.textContent='We could not save your result just now. It is still shown above, and you can message us on WhatsApp.'});
   }
