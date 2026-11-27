@@ -2443,6 +2443,14 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
 .story-visual.sv-plain .story-quote .sq{font-size:clamp(27px,2.7vw,40px);line-height:1.12}
 .story-visual.sv-plain .op-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (max-width:560px){.story-visual.sv-plain .story-quote{padding:26px 24px}.story-visual.sv-plain .chip{font-size:12.5px;padding:10px 14px}}
+
+/* banner without buttons: the headline and a quiet cue */
+.hero-x h1{margin-bottom:0}
+.hero-x .scroll-cue{display:none}
+.hx-cue{margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#8B1E2D;text-decoration:none}
+.hx-cue i{width:1px;height:54px;background:linear-gradient(#C8941E,transparent);animation:drip 2.2s ease-in-out infinite}
+.story .op-name{font-family:var(--serif);font-size:clamp(23px,2vw,28px);line-height:1.25;font-weight:600;letter-spacing:0;margin:4px 0 18px}
+@media (max-width:760px){.hx-cue{margin-top:44px}.hero.hero-b.hero-x{min-height:86svh}}
 </style>
 </head>
 <body>
@@ -2459,11 +2467,7 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
       <span class="line"><span>business processes</span></span>
       <span class="line"><span><em>to enable AI transformation.</em></span></span>
     </h1>
-    <div class="ctas h-in">
-      <a class="btn btn-wine" href="#contact" data-topic="Book a 30-minute strategy call">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a>
-      <a class="btn btn-line" href="#quiz">Or take the 3-minute assessment</a>
-    </div>
-    <p class="cta-promise h-in"><i aria-hidden="true"></i>Thirty minutes. We send you a report with three actions you can start on yourself.</p>
+    <a class="hx-cue h-in" href="#room" aria-label="Scroll to the next section"><span>Scroll</span><i aria-hidden="true"></i></a>
   </div>
   <a class="scroll-cue" href="#room" aria-label="Scroll to the next section">Scroll</a>
 </header>
@@ -2597,6 +2601,7 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
   </div>
   <div class="wf wf-grid" id="wf"><a href="departments/hr/" data-ind="hr" class="wf-tile ind dept"><img class="dept-art" src="media/dept/hr.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">01</b><figcaption><span>Department</span>HR<small class="wf-hook">Your people are not the problem. The silence between them is.</small></figcaption></a><a href="departments/finance/" data-ind="fin" class="wf-tile ind dept"><img class="dept-art" src="media/dept/finance.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">02</b><figcaption><span>Department</span>Finance<small class="wf-hook">You know the money is moving. You find out how a week later.</small></figcaption></a><a href="departments/admin/" data-ind="admin" class="wf-tile ind dept"><img class="dept-art" src="media/dept/admin.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">03</b><figcaption><span>Department</span>Admin<small class="wf-hook">You are paying for a licence to do what a shared mailbox does for free.</small></figcaption></a><a href="departments/project-management/" data-ind="pm" class="wf-tile ind dept"><img class="dept-art" src="media/dept/project-management.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">04</b><figcaption><span>Department</span>Project Management<small class="wf-hook">Five versions of the quotation. The delivery team works from the wrong one.</small></figcaption></a><a href="departments/customer-service/" data-ind="cs" class="wf-tile ind dept"><img class="dept-art" src="media/dept/customer-service.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">05</b><figcaption><span>Department</span>Customer Service<small class="wf-hook">The enquiry came in at 11pm. By morning they had booked someone else.</small></figcaption></a><a href="departments/support-and-feedback/" data-ind="support" class="wf-tile ind dept"><img class="dept-art" src="media/dept/support-and-feedback.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">06</b><figcaption><span>Department</span>Support and Feedback<small class="wf-hook">The complaint was handled. Nobody can say by whom, or whether it is closed.</small></figcaption></a><a href="departments/sales-and-marketing/" data-ind="sales" class="wf-tile ind dept"><img class="dept-art" src="media/dept/sales-and-marketing.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">07</b><figcaption><span>Department</span>Sales and Marketing<small class="wf-hook">A proposal takes two weeks. The client decided in two days.</small></figcaption></a><a href="departments/operations/" data-ind="ops" class="wf-tile ind dept"><img class="dept-art" src="media/dept/operations.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">08</b><figcaption><span>Department</span>Operations<small class="wf-hook">The SOP is written. The team still asks the owner.</small></figcaption></a><a href="departments/compliance-and-data-protection/" data-ind="comp" class="wf-tile ind dept"><img class="dept-art" src="media/dept/compliance-and-data-protection.webp" alt="" loading="lazy" decoding="async"><b class="wf-num" aria-hidden="true">09</b><figcaption><span>Department</span>Compliance and Data Protection<small class="wf-hook">Everyone can download the supplier list. Including the person who left last month.</small></figcaption></a></div>
   <div class="wrap"><p class="wf-more">Procurement, IT, training and management reporting too. <a class="wf-link" href="#contact" data-topic="Something else">Tell us about yours <span aria-hidden="true">&rarr;</span></a></p></div>
+  <div class="wrap"><aside class="call-band reveal" aria-label="Take the assessment"><div class="cb-in"><p class="cb-t"><b>Want to see where your business stands?</b><span>Three minutes. You get your score, your level and where to start.</span></p><a class="btn btn-wine" href="#quiz">Take the 3-minute assessment <span class="arr" aria-hidden="true">&rarr;</span></a></div></aside></div>
 </section>
 
 <section class="how t-cream" id="how" data-section="how" data-ch="5" data-chn="How we work" aria-labelledby="how-h">
@@ -2693,13 +2698,11 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
       
     </div>
     <div class="reveal">
-      <div class="eyebrow">Who builds it</div>
-      <h2 id="op-h">Built by an operator. <em>Proven where the work actually happens.</em></h2>
-      <p class="op-name">April Chen, Founder and CEO</p>
-      <p class="op-line">10+ years in operations, ex-Group COO of IT companies, and a double master&rsquo;s in Business Entrepreneurship and e-Commerce.</p>
-      <p class="body op-true">Technology gets technical. We keep it simple and direct: plain language, quick wins, and systems that stay stable once they go live. We are operators, and we know a business needs speed, sustainability and results that are real.</p>
-      <p class="body">April started in music, as a piano teacher. Then came insurance and real estate, where she ended up running the systems behind the business. Then ISO quality management, ICT and years in operations as Group COO in the IT sector, building the back office from the ground up. For more than ten years she has run operations from the back end of growing companies, including the parts nobody was working on.</p>
-      <p class="body">Her view is simple. Understand the business before you touch it. Fix what is already there before recommending anything new.</p>
+      <div class="eyebrow">Who we are</div>
+      <h2 id="op-h">Built by operators. <em>A framework proven in real operations.</em></h2>
+      <p class="op-name">Aqueenix is a team of operators, led by April Chen.</p>
+      <p class="body op-true">April brings 10+ years in operations across industries, most of it at the back end of growing companies. We know how a business runs as a whole: the back office, the delivery and the customer front.</p>
+      <p class="body">We understand the business before we touch it, and fix what is already there before recommending anything new.</p>
     </div>
   </div>
 </section>
