@@ -154,7 +154,8 @@ a{color:inherit;text-decoration:none}
 @media(max-width:620px){.wa-float{padding:12px;gap:0}.wa-float span{width:0;overflow:hidden;opacity:0}}
 /* ---------- Site-wide gold dust ---------- */
 .gdust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40;opacity:0;transition:opacity 1.6s ease;mix-blend-mode:normal}
-.gdust.on{opacity:.62}
+.gdust.on{opacity:.42}
+.gdust.on.off{opacity:0;transition-duration:.5s}
 @media(prefers-reduced-motion:reduce){.gdust{display:none}}
 .marquee{padding:36px 0 30px;overflow:hidden;white-space:nowrap}
 .marquee-track{display:inline-flex;gap:56px;font-family:var(--serif);font-style:italic;font-size:clamp(28px,4vw,46px);color:var(--em);will-change:transform}
@@ -4846,7 +4847,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   var x=c.getContext('2d'), W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),P=[],run=true,push=0,raf=0;
   function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
   function make(n){P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.7+.35,a:Math.random()*.5+.18,vy:-(Math.random()*.12+.03),vx:(Math.random()-.5)*.08,p:Math.random()*6.283,s:Math.random()*.012+.004})}
-  function build(){size();make(Math.round(Math.min(120,Math.max(46,W*H/16000))))}
+  function build(){size();make(Math.round(Math.min(34,Math.max(14,W*H/44000))))}
   build();
   var last=window.scrollY,vel=0;
   addEventListener('scroll',function(){var y=window.scrollY;vel=y-last;last=y;push+=(vel*0.055-push)*.6},{passive:true});
@@ -4869,6 +4870,14 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   }
   raf=requestAnimationFrame(tick);
   setTimeout(function(){c.classList.add('on')},900);
+  /* forms stay clean: no dust while a form is on screen or the assessment is open */
+  var vis=[],dlg=document.getElementById('fc');
+  function upd(){c.classList.toggle('off',vis.length>0||!!(dlg&&dlg.open))}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){var i=vis.indexOf(e.target);if(e.isIntersecting){if(i<0)vis.push(e.target)}else if(i>=0)vis.splice(i,1)});upd()},{rootMargin:'-10% 0px -10% 0px'});
+    [].slice.call(document.querySelectorAll('#contact, footer.foot form')).forEach(function(z){io.observe(z)});
+  }
+  if(dlg&&'MutationObserver' in window)new MutationObserver(upd).observe(dlg,{attributes:true,attributeFilter:['open']});
 })();
 </script>
 
