@@ -150,6 +150,8 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
 .dq-sent{font-size:13px;color:var(--muted);margin:12px 0 0}
 @media (max-width:720px){.dq-form{grid-template-columns:1fr}.dq-go{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.dq-mail{font-family:var(--serif);font-size:clamp(24px,6vw,34px);line-height:1.15;font-weight:600;color:#8B1E2D;margin:-6px 0 12px;overflow-wrap:anywhere}
+.dq-mailq{font-size:16px;color:#5B4742;margin:0 0 20px}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"Project Management: what to watch, and what we set up",
@@ -271,8 +273,16 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='Please enter a valid email address.';f.dqE.focus();return}
       if(!f.dqC.checked){err.textContent='Please tick the box so we may save your details and answers.';f.dqC.focus();return}
       lead={name:n,phone:p,email:em};i=0;
+      confirmMail();focusTop()});
+  }
+  function confirmMail(){
+    var n=lead.name,p=lead.phone,em=lead.email;
+    body.innerHTML='<p class="dq-q" data-f>We will send your result to</p><p class="dq-mail">'+esc(em)+'</p><p class="dq-mailq">Is this email correct?</p>'+
+      '<div class="dq-actions"><button type="button" class="dq-go" id="dqYes">Yes, start <span aria-hidden="true">&rarr;</span></button><button type="button" class="dq-back" id="dqChange">Change</button></div>';
+    document.getElementById('dqYes').addEventListener('click',function(){
       if(window.fetch&&startSent!==em){startSent=em;fetch(START,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:n,contactEmail:em,contactPhone:e164(p),data:{name:n,email:em,whatsapp:p,source:'Project Management department check',status:'Started, not yet finished',page:location.pathname,started_at:new Date().toISOString(),consent:'Agreed (Privacy Notice, updates and marketing)'}})}).catch(function(){})}
       ask();focusTop()});
+    document.getElementById('dqChange').addEventListener('click',function(){gate();focusTop();var e=document.getElementById('dqE');if(e){e.focus();if(e.select)e.select()}});
   }
   function ask(){
     var q=Q[i],h='<p class="dq-prog"><span>Question '+(i+1)+' of '+Q.length+'</span><span class="dq-bar" aria-hidden="true"><i style="width:'+Math.round(i/Q.length*100)+'%"></i></span></p>'+

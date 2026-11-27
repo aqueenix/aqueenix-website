@@ -2452,6 +2452,12 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
 .hx-cue i{width:1px;height:54px;background:linear-gradient(#C8941E,transparent);animation:drip 2.2s ease-in-out infinite}
 .story .op-name{font-family:var(--serif);font-size:clamp(23px,2vw,28px);line-height:1.25;font-weight:600;letter-spacing:0;margin:4px 0 18px}
 @media (max-width:760px){.hx-cue{margin-top:44px}.hero.hero-b.hero-x{min-height:86svh}}
+
+/* the assessment asks the visitor to confirm the email before the questions start */
+.gt-conf{margin-top:18px;padding:18px 20px;border-radius:18px;background:#FDF6F4;border:1px solid rgba(200,148,30,.55)}
+.gt-conf p{margin:0 0 14px;font-size:16px;line-height:1.5;color:#3A0E0C}
+.gt-conf b{display:block;font-family:var(--serif);font-size:clamp(22px,5.4vw,28px);line-height:1.2;color:#8B1E2D;margin:4px 0;overflow-wrap:anywhere}
+.gt-conf-b{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -3602,6 +3608,16 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       if(gp.replace(/\D/g,'').length<8||!/^[+\d][\d\s-]{6,}$/.test(gp))return gbad('gtPhone','Please enter a contact number we can reach you on.');
       var gr=AQ_LEADS.checkEmail(ge);if(!gr.ok){document.getElementById('gtEmailMsg').textContent=gr.msg;return gbad('gtEmail',gr.msg)}
       if(!document.getElementById('gtOk').checked){document.getElementById('gtOk').focus();err.textContent='Please tick the box so we may save your details and answers.';return false}
+      if(S.mailOk!==gr.email){
+        var oldc=document.getElementById('gtConf');if(oldc)oldc.remove();
+        var box=document.createElement('div');box.id='gtConf';box.className='gt-conf';box.setAttribute('role','group');box.setAttribute('aria-label','Confirm your email');
+        box.innerHTML='<p>We will send your report to <b>'+esc(gr.email)+'</b>Is this email correct?</p><div class="gt-conf-b"><button type="button" class="btn btn-wine" id="gtYes">Yes, start <span class="arr" aria-hidden="true">&rarr;</span></button><button type="button" class="fc-ghost" id="gtNo">Change</button></div>';
+        body.appendChild(box);err.textContent='';
+        document.getElementById('gtYes').addEventListener('click',function(){S.mailOk=gr.email;document.getElementById('fcNext').click()});
+        document.getElementById('gtNo').addEventListener('click',function(){box.remove();var el=document.getElementById('gtEmail');el.focus();if(el.select)el.select()});
+        if(box.scrollIntoView)box.scrollIntoView({block:'nearest'});document.getElementById('gtYes').focus();
+        return false;
+      }
       var L0=S.lead||{};
       S.lead={name:gn,company:L0.company||'',email:gr.email,phone:gp,bottleneck:L0.bottleneck||'',marketing:true};S.gated=true;
       if(window.AQ_HOOK&&S.startSent!==gr.email){S.startSent=gr.email;
