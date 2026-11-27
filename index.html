@@ -49,6 +49,14 @@ a{color:inherit;text-decoration:none}
 .btn:hover{transform:translateY(-3px)}
 .btn:hover::before{transform:translateY(0)}
 .btn .arr{transition:transform .4s}.btn:hover .arr{transform:translateX(4px)}
+/* pressed, and busy: the button answers the tap and holds its place while it works */
+.btn:active{transform:translateY(0) scale(.96);transition-duration:.09s}
+.btn-rip{position:absolute;border-radius:50%;background:currentColor;opacity:.3;transform:scale(0);pointer-events:none;animation:btnRip .6s ease-out forwards}
+@keyframes btnRip{to{transform:scale(1);opacity:0}}
+.btn.is-loading,.btn.is-loading:hover,.btn.is-loading:active{transform:none;cursor:progress;pointer-events:none}
+.btn-spin{width:17px;height:17px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:btnSpin .7s linear infinite;flex:0 0 auto}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.btn-rip{display:none}.btn-spin{animation-duration:1.6s}}
 .btn-wine{background:var(--wine);color:var(--white);box-shadow:0 14px 40px -12px rgba(139,30,45,.55)}
 .btn-wine::before{background:var(--hover-fill)}.btn-wine:hover{color:var(--hover-fg)}
 .btn-glass{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -2982,7 +2990,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     for(var k in fields)if(Object.prototype.hasOwnProperty.call(fields,k))data[k]=fields[k]==null?'':String(fields[k]);
     if(!window.fetch)return Promise.resolve(false);
     return fetch('https://formsubmit.co/ajax/contact@aqueenix.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.ok}).catch(function(){return false});
+      .then(function(r){return r.ok?r.json().then(function(j){return String(j&&j.success)==='true'}):false}).catch(function(){return false});
   };
   /* Chatbees: every submission becomes a contact with its fields and a tag */
   window.AQ_HOOKS={
@@ -3054,6 +3062,20 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
     });
   }
 
+  AQ.busy=function(btn,label){
+    if(!btn)return function(){};
+    var c=btn.cloneNode(true);[].forEach.call(c.querySelectorAll('.btn-rip'),function(x){x.remove()});
+    var html=c.innerHTML,w=btn.offsetWidth,ht=btn.offsetHeight;
+    btn.style.width=w+'px';btn.style.height=ht+'px';btn.classList.add('is-loading');btn.disabled=true;btn.setAttribute('aria-busy','true');
+    btn.innerHTML='<span class="btn-spin" aria-hidden="true"></span><span>'+label+'</span>';
+    return function(){btn.classList.remove('is-loading');btn.disabled=false;btn.removeAttribute('aria-busy');btn.innerHTML=html;btn.style.width='';btn.style.height=''};
+  };
+  document.addEventListener('pointerdown',function(e){
+    var b=e.target&&e.target.closest&&e.target.closest('.btn');if(!b||b.disabled)return;
+    var r=b.getBoundingClientRect(),s=document.createElement('span'),d=Math.max(r.width,r.height)*2.1;
+    s.className='btn-rip';s.setAttribute('aria-hidden','true');s.style.width=s.style.height=d+'px';s.style.left=(e.clientX-r.left-d/2)+'px';s.style.top=(e.clientY-r.top-d/2)+'px';
+    b.appendChild(s);s.addEventListener('animationend',function(){s.remove()});setTimeout(function(){if(s.parentNode)s.remove()},900);
+  },{passive:true});
   AQ.scrollTo=function(sel){
     var t=typeof sel==='string'?document.querySelector(sel):sel;if(!t)return;
     if(AQ.lenis){AQ.lenis.scrollTo(t,{offset:-20})}
@@ -4689,10 +4711,10 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       var sub='Strategy call'+(priority?' (priority)':'')+': '+f('company');
       var body=['Name: '+f('name'),'Company: '+f('company'),'Topic: '+(f('topic')||'-'),'Role: '+(f('role')||'-'),'Email: '+f('email'),'Mobile: '+f('phone'),'Team size: '+f('size'),'Based in: '+(f('state')||'-'),'Heard about us: '+(f('source')||'-'),'Something else: '+(f('other')||'-'),'','What good looks like:',f('good'),'','What is holding it back:',f('message'),'','Who decides: '+f('decider'),'How urgent: '+f('ready'),'AI training before: '+f('trained'),'HRD Corp levy: '+f('hrdc'),'Another department: '+f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside: '+f('budget'),'Priority routing: '+(priority?'yes':'no'),'','Sent from the Aqueenix website.'].join('\n');
       var href='mailto:contact@aqueenix.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
-      var btn=ef.querySelector('button[type="submit"]'),btnHtml=btn?btn.innerHTML:'';if(btn){btn.disabled=true;btn.textContent='Sending your request...'}msg.textContent='Sending...';
+      var btn=ef.querySelector('button[type="submit"]'),free=AQ.busy(btn,'Sending');msg.textContent='';
       var topic=f('topic');var isCall=true;
       window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('other'),page:location.pathname,priority:priority?'yes':'no',greeting:'Hi '+String(f('name')||'').split(' ')[0]+',',consent:'Agreed (Privacy Notice, updates and marketing)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice, updates and marketing)',_replyto:f('email')}).then(function(ok){
-        if(btn){btn.disabled=false;btn.innerHTML=btnHtml}
+        free();
         if(ok){var first=String(f('name')||'').split(' ')[0],sentTo=f('email');msg.className='enq-msg ok';msg.textContent='';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0);
           var dn=document.getElementById('enqDone');document.getElementById('enqDoneH').textContent='Thank you'+(first?', '+first:'')+'. We have your request.';document.getElementById('enqDoneTo').textContent=sentTo;
           ef.classList.add('sent');dn.hidden=false;try{dn.focus({preventScroll:true})}catch(x){}
