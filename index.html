@@ -1095,6 +1095,18 @@ html{scroll-behavior:auto}
 .enq-note{font-size:12.5px;color:#8a7f77}
 .enq-msg{font-size:14px;color:#8B1E2D;min-height:1.4em}
 .enq-msg.ok{color:#4A4D34;font-weight:600}
+.enq-msg.err{background:#fff;border:1px solid rgba(139,30,45,.4);border-left:4px solid #8B1E2D;border-radius:10px;padding:12px 14px;font-size:15px;font-weight:600}
+.enq-err{font-size:14px;font-weight:600;color:#8B1E2D;margin:2px 0 0;text-transform:none;letter-spacing:0}
+.enq.sent>*:not(.enq-done){display:none}
+.enq-done{display:grid;gap:12px;justify-items:start;padding:18px 4px;outline:none}
+.enq-done[hidden]{display:none}
+.enq-tick{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#6E120F;color:#F5EFE6;box-shadow:0 0 0 1px #C8941E,0 0 0 6px rgba(200,148,30,.14)}
+.enq-done-k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6E120F;margin:6px 0 0}
+.enq-done h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(28px,4.4vw,38px);line-height:1.12;color:#211F1D;margin:0;text-wrap:balance}
+.enq-done p{font-size:17px;line-height:1.55;color:#3a3531;margin:0}
+.enq-done strong{color:#6E120F;overflow-wrap:anywhere}
+.enq-done .enq-done-p{border-top:1px solid rgba(200,148,30,.55);padding-top:14px;margin-top:4px;color:#5d544e;font-size:15.5px}
+.enq-again{font:inherit;font-size:14.5px;font-weight:600;color:#6E120F;background:none;border:0;padding:6px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(max-width:900px){.ct-grid{grid-template-columns:1fr;gap:40px}.ct-bg{inset:0;opacity:.12}.enq{padding:26px 20px;border-radius:24px}.enq-row{grid-template-columns:1fr}}
 
 /* ---------- Footer ---------- */
@@ -2854,6 +2866,14 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
       <button class="btn btn-wine enq-go" type="submit">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></button>
       <p class="enq-note">Thirty minutes. We send you a report with three actions you can start on yourself. Your details go straight to contact@aqueenix.com.</p>
       <p class="enq-msg" id="enqMsg" aria-live="polite"></p>
+      <div class="enq-done" id="enqDone" role="status" tabindex="-1" hidden>
+        <span class="enq-tick" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <p class="enq-done-k">Request received</p>
+        <h3 id="enqDoneH">Thank you. We have your request.</h3>
+        <p>We will contact you at <strong id="enqDoneTo"></strong> to set a time for your call.</p>
+        <p class="enq-done-p">Thirty minutes. We send you a report with three actions you can start on yourself.</p>
+        <button type="button" class="enq-again" id="enqAgain">Send another request</button>
+      </div>
     </form>
   </div>
 </section>
@@ -3008,10 +3028,8 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   /* send to both: Chatbees keeps the record, the email gives an instant alert */
   window.AQ_BOTH=function(which,name,email,phone,hookData,subject,fields){
     var cap=function(pr){return Promise.race([pr,new Promise(function(res){setTimeout(function(){res(false)},9000)})])};
-    return Promise.all([
-      cap(window.AQ_HOOK(which,name,email,phone,hookData)),
-      cap(window.AQ_SEND(subject,fields))
-    ]).then(function(r){return r[0]||r[1]});
+    var ps=[cap(window.AQ_HOOK(which,name,email,phone,hookData)),cap(window.AQ_SEND(subject,fields))];
+    return new Promise(function(res){var n=0,done=false;ps.forEach(function(pr){pr.then(function(ok){n++;if(done)return;if(ok||n===ps.length){done=true;res(!!ok)}})})});
   };
   var nf=document.getElementById('newsForm');
   if(nf){
@@ -4641,12 +4659,17 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
   /* ---------- Enquiry form: sends to contact@aqueenix.com; falls back to the visitor's email app ---------- */
   var ef=document.getElementById('enqForm');
   if(ef){
+    var again=document.getElementById('enqAgain');if(again)again.addEventListener('click',function(){ef.classList.remove('sent');document.getElementById('enqDone').hidden=true;var n=ef.elements.name;if(n)n.focus()});
     ef.addEventListener('submit',function(e){
       e.preventDefault();
       var f=function(n){return (ef.elements[n]&&ef.elements[n].value||'').trim()},msg=document.getElementById('enqMsg');
       msg.className='enq-msg';
       [].forEach.call(ef.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid')});
-      function bad(n,t){var el=ef.elements[n];el.setAttribute('aria-invalid','true');el.focus();msg.textContent=t}
+      [].forEach.call(ef.querySelectorAll('.enq-err'),function(x){x.remove()});
+      function show(el,t){msg.className='enq-msg err';msg.textContent=t;var e2=document.createElement('p');e2.className='enq-err';e2.textContent=t;var host=el.closest('.consent')||el;host.parentNode.insertBefore(e2,host.nextSibling);
+        try{el.focus({preventScroll:true})}catch(x){el.focus()}
+        var r=el.getBoundingClientRect();if(r.top<90||r.bottom>window.innerHeight-90){if(AQ.lenis)AQ.lenis.scrollTo(el,{offset:-140,duration:.6});else el.scrollIntoView({block:'center'})}}
+      function bad(n,t){var el=ef.elements[n];el.setAttribute('aria-invalid','true');show(el,t)}
       if(!f('name'))return bad('name','Please tell us what to call you.');
       if(!f('company'))return bad('company','Please tell us your company.');
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f('email')))return bad('email','Enter your work email, for example name@company.com.my.');
@@ -4660,16 +4683,20 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       if(!f('trained'))return bad('trained','Tell us whether your team has attended AI training.');
       if(!f('hrdc'))return bad('hrdc','Tell us whether HRD Corp levy is part of your plan.');
       if(!f('budget'))return bad('budget','Pick a range, or tell us you are not sure yet.');
-      if(!ef.elements.consent.checked){ef.elements.consent.focus();msg.textContent='Tick the box so we may use your details to arrange your call.';return}
+      if(!ef.elements.consent.checked){show(ef.elements.consent,'Tick the box so we may use your details to arrange your call.');return}
+      msg.className='enq-msg';
       var priority=(['10 to 30','31 to 60'].indexOf(f('size'))>-1)&&(/^I decide/.test(f('decider')))&&(f('ready')==='I need to start this month'||f('ready')==='I want to start within 3 months');
       var sub='Strategy call'+(priority?' (priority)':'')+': '+f('company');
       var body=['Name: '+f('name'),'Company: '+f('company'),'Topic: '+(f('topic')||'-'),'Role: '+(f('role')||'-'),'Email: '+f('email'),'Mobile: '+f('phone'),'Team size: '+f('size'),'Based in: '+(f('state')||'-'),'Heard about us: '+(f('source')||'-'),'Something else: '+(f('other')||'-'),'','What good looks like:',f('good'),'','What is holding it back:',f('message'),'','Who decides: '+f('decider'),'How urgent: '+f('ready'),'AI training before: '+f('trained'),'HRD Corp levy: '+f('hrdc'),'Another department: '+f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside: '+f('budget'),'Priority routing: '+(priority?'yes':'no'),'','Sent from the Aqueenix website.'].join('\n');
       var href='mailto:contact@aqueenix.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
-      var btn=ef.querySelector('button[type="submit"]');if(btn)btn.disabled=true;msg.textContent='Sending...';
+      var btn=ef.querySelector('button[type="submit"]'),btnHtml=btn?btn.innerHTML:'';if(btn){btn.disabled=true;btn.textContent='Sending your request...'}msg.textContent='Sending...';
       var topic=f('topic');var isCall=true;
       window.AQ_BOTH('call',f('name'),f('email'),f('phone'),{fullname:f('name'),company:f('company'),email:f('email'),mobile:f('phone'),role:f('role'),size:f('size'),state:f('state'),source:f('source'),challenge:f('message'),good:f('good'),decider:f('decider'),urgency:f('ready'),ai_training:f('trained'),hrdc:f('hrdc'),other_departments:f('more')+(f('morewhich')?': '+f('morewhich'):''),budget:f('budget'),topic:f('topic'),topic_detail:f('other'),page:location.pathname,priority:priority?'yes':'no',greeting:'Hi '+String(f('name')||'').split(' ')[0]+',',consent:'Agreed (Privacy Notice, updates and marketing)'},sub,{Name:f('name'),Company:f('company'),Topic:f('topic')||'-',Role:f('role')||'-',Email:f('email'),Mobile:f('phone'),'Team size':f('size'),'Based in':f('state')||'-','Heard about us':f('source')||'-','What good looks like':f('good'),'What is holding it back':f('message'),'Who decides':f('decider'),'How urgent':f('ready'),'AI training before':f('trained'),'HRD Corp levy':f('hrdc'),'Another department':f('more')+(f('morewhich')?' ('+f('morewhich')+')':''),'Budget set aside':f('budget'),'Priority':priority?'yes':'no',Consent:'Agreed (Privacy Notice, updates and marketing)',_replyto:f('email')}).then(function(ok){
-        if(btn)btn.disabled=false;
-        if(ok){msg.className='enq-msg ok';msg.textContent='Thank you, '+f('name')+'. Your enquiry has reached us at contact@aqueenix.com, and we will be in touch.';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0)}
+        if(btn){btn.disabled=false;btn.innerHTML=btnHtml}
+        if(ok){var first=String(f('name')||'').split(' ')[0],sentTo=f('email');msg.className='enq-msg ok';msg.textContent='';ef.reset();setTimeout(window.AQ_TOPIC_SYNC||function(){},0);
+          var dn=document.getElementById('enqDone');document.getElementById('enqDoneH').textContent='Thank you'+(first?', '+first:'')+'. We have your request.';document.getElementById('enqDoneTo').textContent=sentTo;
+          ef.classList.add('sent');dn.hidden=false;try{dn.focus({preventScroll:true})}catch(x){}
+          if(AQ.lenis)AQ.lenis.scrollTo(ef,{offset:-110,duration:.7});else ef.scrollIntoView({block:'start'})}
         else{msg.className='enq-msg ok';msg.textContent='Your email app is opening with your enquiry ready to send to contact@aqueenix.com. If nothing opens, email us directly at contact@aqueenix.com.';window.location.href=href}
       });
     });
