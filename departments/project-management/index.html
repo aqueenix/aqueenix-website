@@ -303,7 +303,7 @@ html{scroll-behavior:smooth}#deptCheck{scroll-margin-top:84px}
     var trail='';try{trail=JSON.parse(sessionStorage.getItem('aq_trail')||'[]').join(' > ')}catch(e){}
     var data={source:'Project Management department check',status:'Completed',stopped_at:'Finished',pages_viewed:trail,came_from:document.referrer||'Direct',page:location.pathname,score:score+' of '+max,level:lv.n,
       gaps:weak.map(function(g){return Q[g.x].t}).join('; ')||'None'};
-    data.department='Project Management';data.name=lead.name;data.greeting='Hi '+String(lead.name||'').split(' ')[0]+',';data.score_no=score;data.score_max=max;data.level_meaning=lv.d;data.page_url=location.origin+location.pathname;
+    data.department='Project Management';data.name=lead.name;data.greeting='Hi '+String(lead.name||'').split(' ')[0]+',';data.score_no=score;data.score_max=max;data.score_pct=pct;data.level_meaning=lv.d;data.page_url=location.origin+location.pathname;
     data.move1_title=weak[0]?Q[weak[0].x].t:'Nothing weak here';data.move1=weak[0]?Q[weak[0].x].m:'Every answer was the strong one.';data.move2_title=weak[1]?Q[weak[1].x].t:'';data.move2=weak[1]?Q[weak[1].x].m:'';
     Q.forEach(function(q,x){data['pm_'+q.k]=q.o[ans[x]]});
     var sent=document.getElementById('dqSent');
