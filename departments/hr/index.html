@@ -240,7 +240,7 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
 /* The 2-minute HR check: details first, seven questions, one result. Sent to Chatbees once, on completion. */
 (function(){
   var body=document.getElementById('dqBody');if(!body)return;
-  var HOOK='https://my.chatbees.io/api/webhooks/flow/10170/2e357bbef957fde461b8db0f6326471cac002869918fbde40df1f044d28c5018';
+  var HOOK='https://my.chatbees.io/api/webhooks/flow/10221/858d6eab4f33f1760cac0c52b2647e10a28c5ffbdb00003d3554aa0189423fe3';
   var Q=[
     {k:'answers',q:'A staff member has a question about leave, claims or pay. Where does the answer come from?',
      o:['One written place that everyone uses','It depends on who they ask','They ask the owner'],
@@ -325,6 +325,8 @@ html{scroll-behavior:smooth}#hrCheck{scroll-margin-top:84px}
     var trail='';try{trail=JSON.parse(sessionStorage.getItem('aq_trail')||'[]').join(' > ')}catch(e){}
     var data={source:'HR department check',status:'Completed',stopped_at:'Finished',pages_viewed:trail,came_from:document.referrer||'Direct',page:location.pathname,score:score+' of '+max,level:lv.n,
       gaps:weak.map(function(g){return Q[g.x].t}).join('; ')||'None'};
+    data.department='HR';data.name=lead.name;data.greeting='Hi '+String(lead.name||'').split(' ')[0]+',';data.score_no=score;data.score_max=max;data.level_meaning=lv.d;data.page_url=location.origin+location.pathname;
+    data.move1_title=weak[0]?Q[weak[0].x].t:'Nothing weak here';data.move1=weak[0]?Q[weak[0].x].m:'Every answer was the strong one.';data.move2_title=weak[1]?Q[weak[1].x].t:'';data.move2=weak[1]?Q[weak[1].x].m:'';
     Q.forEach(function(q,x){data['hr_'+q.k]=q.o[ans[x]]});
     var sent=document.getElementById('dqSent');
     if(!window.fetch){return}
