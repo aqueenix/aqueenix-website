@@ -2794,7 +2794,7 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
       </div>
       <div class="enq-row">
         <div><label for="enqEmail">Work email <small>We send your report here.</small></label><input id="enqEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com.my" required></div>
-        <div><label for="enqPhone">Mobile <small>For WhatsApp and calls.</small></label><input id="enqPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+        <div><label for="enqPhone">Contact number <small>For WhatsApp and calls.</small></label><input id="enqPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
       </div>
       <div class="enq-row">
         <div><label for="enqRole">What is your role in the business?</label><select id="enqRole" name="role" required><option value="">Choose one</option><option>I am the founder or owner</option><option>I am the CEO or Managing Director</option><option>I am a director or partner</option><option>I lead a department</option><option>I am part of the team</option></select></div>
@@ -3451,9 +3451,9 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       back.disabled=true;
       var G=S.lead||{};
       body.innerHTML='<div class="lead-step"><p class="fc-legend" tabindex="-1"><span class="fc-area">Before you start</span>Where should we send your result?</p>'+
-        '<p class="gate-lede">Three details, then the questions. Your score and your first moves go to this email and WhatsApp number.</p>'+
+        '<p class="gate-lede">Three details, then the questions. Your score and your first moves go to this email.</p>'+
         '<div class="lead-grid"><div><label for="gtName">Short name</label><input id="gtName" autocomplete="name" value="'+esc(G.name||'')+'"></div>'+
-        '<div><label for="gtPhone">WhatsApp number</label><input id="gtPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 012 345 6789" value="'+esc(G.phone||'')+'"></div>'+
+        '<div><label for="gtPhone">Contact number</label><input id="gtPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 012 345 6789" value="'+esc(G.phone||'')+'"></div>'+
         '<div class="gate-wide"><label for="gtEmail">Work email</label><input id="gtEmail" type="email" autocomplete="email" placeholder="name@yourcompany.com.my" value="'+esc(G.email||'')+'" aria-describedby="gtEmailMsg"><p class="ld-emsg" id="gtEmailMsg" aria-live="polite"></p></div></div>'+
         '<label class="lead-mk" for="gtOk"><input type="checkbox" id="gtOk"'+(S.gated?' checked':'')+'><span>I agree that Aqueenix Sdn. Bhd. may save these details and my answers, contact me about my result, and send me occasional updates and marketing material, as explained in the <a href="privacy/" target="_blank" rel="noopener">Privacy Notice</a>. I can unsubscribe at any time. <span lang="ms">Saya bersetuju Aqueenix Sdn. Bhd. boleh menyimpan maklumat dan jawapan saya, menghubungi saya berkenaan keputusan saya, dan menghantar kemas kini serta bahan pemasaran sekali-sekala. Saya boleh berhenti melanggan pada bila-bila masa.</span></span></label>'+
         '</div>';
@@ -3598,7 +3598,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       function gbad(id,m){var el=document.getElementById(id);el.setAttribute('aria-invalid','true');el.focus();err.textContent=m;return false}
       var gn=gv('gtName'),gp=gv('gtPhone'),ge=gv('gtEmail');
       if(gn.length<2)return gbad('gtName','Please tell us what to call you.');
-      if(gp.replace(/\D/g,'').length<8||!/^[+\d][\d\s-]{6,}$/.test(gp))return gbad('gtPhone','Please enter a WhatsApp number we can reach you on.');
+      if(gp.replace(/\D/g,'').length<8||!/^[+\d][\d\s-]{6,}$/.test(gp))return gbad('gtPhone','Please enter a contact number we can reach you on.');
       var gr=AQ_LEADS.checkEmail(ge);if(!gr.ok){document.getElementById('gtEmailMsg').textContent=gr.msg;return gbad('gtEmail',gr.msg)}
       if(!document.getElementById('gtOk').checked){document.getElementById('gtOk').focus();err.textContent='Please tick the box so we may save your details and answers.';return false}
       var L0=S.lead||{};
@@ -3636,7 +3636,7 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
       if(!co)return bad('ldCo','Please tell us your company name.');
       var rv=document.getElementById('ldRole').value,wv=document.getElementById('ldWhen').value;if(rv==='')return bad('ldRole','Please choose your role.');S.p.role=+rv;S.p.when=wv===''?null:+wv;
       var r=AQ_LEADS.checkEmail(em);if(!r.ok){document.getElementById('ldEmailMsg').textContent=r.msg;return bad('ldEmail',r.msg)}
-      if(ph&&!/^[+\d][\d\s-]{6,}$/.test(ph))return bad('ldPhone','Check the WhatsApp number, or leave it blank.');
+      if(ph&&!/^[+\d][\d\s-]{6,}$/.test(ph))return bad('ldPhone','Check the contact number, or leave it blank.');
       var bnEl=document.getElementById('ldBn');
       S.lead={name:name,company:co,email:r.email,phone:ph,bottleneck:bnEl?(bnEl.value||'').trim():'',marketing:true};
       return true;
