@@ -2508,6 +2508,14 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
 .room .vmv-values{margin-top:92px}
 .vmv{padding-block:70px 76px}
 @media (max-width:760px){.room .vmv-values{margin-top:54px}.vmv{padding-block:48px 52px}}
+
+/* what your customers see: four front-end cards in the departments style */
+.front-grid{margin-top:46px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.front-grid .wf-tile{aspect-ratio:3/3.5;box-shadow:0 40px 70px -46px rgba(58,14,12,.55)}
+.front-grid .wf-tile .dept-art{height:54%;top:5%}
+.front-grid .wf-tile figcaption{padding:20px 18px 18px;font-size:clamp(19px,1.5vw,23px)}
+.front-grid .wf-tile figcaption span{color:#F0CF7A}
+@media (max-width:900px){.front-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.front-grid .wf-tile{aspect-ratio:3/4.4}.front-grid .wf-tile .dept-art{height:46%}.front-grid .wf-tile figcaption{padding:14px 14px 12px;font-size:17px}}
 </style>
 </head>
 <body>
@@ -2648,18 +2656,14 @@ main>.marquee{position:relative;overflow:visible;overflow-x:clip}
   </div>
 </section>
 
-<section class="tn t-blush" id="now" data-section="now" aria-labelledby="tn-h">
+<section class="tn t-blush front" id="now" data-section="front" aria-labelledby="tn-h">
   <div class="tn-bg" aria-hidden="true"><i class="hb-orb o1"></i><i class="hb-orb o2"></i></div>
   <div class="wrap">
     <div class="tn-head reveal">
-      <div class="eyebrow">Then, now and next</div>
-      <h2 id="tn-h">Flyers. Then email. <em>Now AI.</em></h2>
-      <p class="lead">Every wave changed how a business reaches its customers and how it runs behind the scenes. The ones that gained were not the ones that bought the tools first. They were the ones that reorganised the work around them.</p>
+      <div class="eyebrow">The front end</div>
+      <h2 id="tn-h">What your customers <em>see.</em></h2>
     </div>
-    <div class="tn-table" role="table" aria-label="How front end and back end work changed from print, to digital, to AI">
-      <div class="tn-row tn-th era" role="row"><span role="columnheader">What you need</span><span role="columnheader">Print era</span><span role="columnheader">Digital era</span><span role="columnheader">With AI, now</span></div>
-      <div class="tn-row era" role="row"><div class="tn-what" role="rowheader">Answering enquiries</div><div class="tn-then era-p" role="cell"><b><s>A receptionist, office hours</s></b><span>45 of the week&rsquo;s 168 hours covered</span></div><div class="tn-then era-d" role="cell"><b>Email and web forms</b><span>Answered the next working day</span></div><div class="tn-now" role="cell"><b>An AI front desk, 24/7</b><span>On WhatsApp, Instagram and web, passing complex cases to your team</span></div></div>
-    </div>
+    <div class="front-grid reveal"><figure class="wf-tile dept ft"><img class="dept-art" src="media/front/marketing.webp" alt="Watercolour of two colleagues planning content at a table" loading="lazy" decoding="async"><figcaption><span>Front end</span>Marketing<small class="wf-hook">Content that goes out every week.</small></figcaption></figure><figure class="wf-tile dept ft"><img class="dept-art" src="media/front/enquiries.webp" alt="Watercolour of a customer with a phone at a front desk" loading="lazy" decoding="async"><figcaption><span>Front end</span>Enquiries and bookings<small class="wf-hook">Answered in a minute, day or night.</small></figcaption></figure><figure class="wf-tile dept ft"><img class="dept-art" src="media/front/support.webp" alt="Watercolour of a staff member helping a seated customer with a tablet" loading="lazy" decoding="async"><figcaption><span>Front end</span>Customer support<small class="wf-hook">A person within reach when it matters.</small></figcaption></figure><figure class="wf-tile dept ft"><img class="dept-art" src="media/front/loyalty.webp" alt="Watercolour of a returning customer receiving a loyalty card and a gift" loading="lazy" decoding="async"><figcaption><span>Front end</span>Follow-up and loyalty<small class="wf-hook">No lead left waiting.</small></figcaption></figure></div>
   </div>
 </section>
 
