@@ -3783,14 +3783,15 @@ window.AQ_QUIZ={"blocks":[{"id":"customer_history","layer":1,"name":"Customer Hi
 
   /* ---------- The report ---------- */
   /* When the report goes out by email: the screen shows the level and the main gap only */
-  window.AQ_REPORT_BY_EMAIL=/[?&]report=email(&|$)/.test(location.search);
+  /* the full report goes by email; the screen shows the score, the main gap and what is on its way */
+  window.AQ_REPORT_BY_EMAIL=true;
   function teaserHTML(r){
     var L=lv(r.level),co=S.lead&&S.lead.company?S.lead.company:'Your business',em=S.lead?S.lead.email:'your email',gap1=r.gaps[0];
     var verdict=gap1?('What holds you back most is '+gap1.d.name+(gap1.items[0]?': '+gap1.items[0].replace(/ \((missing|shaky)\)$/,' is $1')+'.':'.')):'Every area is in good shape.';
     return '<div class="rp rp-teaser">'+
       '<div class="rp-head" tabindex="-1"><div class="rp-score"><span id="resNum">'+r.overall+'</span><small>/100</small></div><div><p class="rp-k">'+esc(co)+' &middot; '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+'</p><p class="rp-level">Level '+r.level+', '+esc(L.name)+'</p><p>'+esc(L.d)+'</p></div></div>'+
       '<div class="rp-sec rp-mean"><h4>Your main gap</h4><p>'+esc(verdict)+'</p></div>'+
-      '<div class="rp-sec rp-inbox"><h4>Your full report is on its way</h4><p>We are sending it to <b>'+esc(em)+'</b>. It covers:</p><ul class="lead-gets">'+(MODE==='short'?'<li>Your top three gaps and what they cost</li><li>The one move to make first</li>':'<li>Your score across eight areas</li><li>Your top three gaps and what they cost</li><li>Small things you can do this week</li><li>Your 90-day path, foundation first, then AI</li>')+'</ul><p class="rp-note">Not in your inbox within a few minutes? Check spam, or message us on WhatsApp.</p></div>'+
+      '<div class="rp-sec rp-inbox"><h4>Your full report is on its way</h4><p>We are sending it to <b>'+esc(em)+'</b>. It covers:</p><ul class="lead-gets">'+'<li>Where you are today, and where you can be next</li><li>The three gaps to start with</li><li>Three things you can do this week</li><li>Your next 90 days</li>'+'</ul><p class="rp-note">Not in your inbox within a few minutes? Check spam, or message us on WhatsApp.</p></div>'+
       '<div class="rp-cta"><a class="btn btn-wine" href="#contact" id="resBook">Book a free 30-minute strategy call <span class="arr" aria-hidden="true">&rarr;</span></a></div>'+
       '<p class="rp-saved" id="rpSaved" aria-live="polite"></p>'+
       '</div>';
